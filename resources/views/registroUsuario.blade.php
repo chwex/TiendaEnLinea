@@ -1,10 +1,10 @@
-@extends('principal')
+@extends('layouts.app')
 
 @section('encabezado')
     <h2>Inicio</h2>
 @stop
 
-@section('contenido')
+@section('content')
     <form action="" method="POST">
     <input type="hidden" name="_token" value="{{csrf_token() }}">
         
