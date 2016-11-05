@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
 
-Route::get('/inicio', 'categoriasController@inicio');
+Route::get('/inicio', 'inicioController@inicio');
 
 Route::get('admin', function () {
     return view('admin_template');

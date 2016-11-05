@@ -9,9 +9,5 @@ use DB;
 
 class categoriasController extends Controller
 {
-    public function inicio()
-    {
-        $categorias=categorias::all();
-        return view('inicio', compact('categorias'));
-    }
+
 }
