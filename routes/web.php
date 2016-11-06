@@ -11,15 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/inicio', 'inicioController@inicio');
+Route::get('/', 'inicioController@inicio');
 
 //grupo de rutas las cuales solo podran ser accedidas por administradores
 Route::group(['middleware' => ['admin']], function(){

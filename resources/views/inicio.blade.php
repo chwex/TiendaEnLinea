@@ -28,10 +28,12 @@
 </head>
 <body>
 
-<div class="jumbotron">
-  <div class="container text-center">
-    <h1>Games Bond</h1>
-    <p>GG EZ PZ</p>
+<!--<div class="jumbotron" style="background-image:url('{{ asset("/Imagenes/banner.png") }}'); background-size: 100% auto; padding-bottom: 9%;">
+</div>-->
+
+<div class="container-fluid">
+  <div class="row">
+	  <img src="{{ asset("/Imagenes/banner.png") }}" class="img-responsive">
   </div>
 </div>
 
@@ -43,7 +45,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-left" href="#">
+        <img width="60%" src="{{ asset("/Imagenes/minilogo.png") }}" alt="Image">
+      </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -57,7 +61,31 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+         <!-- Authentication Links -->
+        @if (Auth::guest())
+            <li><a href="{{ url('/login') }}">Login</a></li>
+            <li><a href="{{ url('/register') }}">Register</a></li>
+        @else
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{{ url('/logout') }}"
+                            onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        @endif
         <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
       </ul>
       
