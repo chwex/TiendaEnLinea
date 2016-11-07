@@ -9,5 +9,13 @@ use DB;
 
 class categoriasController extends Controller
 {
+	 public function guardar(Request $datos)
+	 {
+    	$categoria= new categorias;
+    	$categoria->nombre=$datos->input('nombre');
+		$categoria->save();
 
+
+    	return Redirect('/inicio');
+    }
 }

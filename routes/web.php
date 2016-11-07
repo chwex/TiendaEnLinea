@@ -18,7 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
-
+Route::get('/guardarCategoria', '/categoriasController@guardar');   #}agregar categoria nueva
+Route::get('/guardarProducto', '/productosController@guardar');    #agregar producto
 Route::get('/inicio', 'inicioController@inicio');
 
 Route::get('admin', function () {
