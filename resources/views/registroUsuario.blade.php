@@ -5,6 +5,7 @@
 @stop
 
 @section('content')
+<div class="container-fluid">
     <form action="" method="POST">
     <input type="hidden" name="_token" value="{{csrf_token() }}">
         
@@ -59,5 +60,6 @@
             <input type="submit" value="Registrar" class="btn btn-primary" name="registrar">
             <a href="{{url('/home')}}" class="btn btn-danger">Cancelar</a>
     </form>
+    </div>
 @stop
 
