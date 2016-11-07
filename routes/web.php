@@ -11,17 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
 Route::get('/guardarCategoria', '/categoriasController@guardar');   #}agregar categoria nueva
 Route::get('/guardarProducto', '/productosController@guardar');    #agregar producto
-Route::get('/inicio', 'inicioController@inicio');
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'inicioController@inicio');
 
-Route::get('admin', function () {
-    return view('admin_template');
+//grupo de rutas las cuales solo podran ser accedidas por administradores
+Route::group(['middleware' => ['admin']], function(){
+    Route::get('admin',function(){
+        return view('admindash');
+    });
 });
