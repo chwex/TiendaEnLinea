@@ -28,6 +28,6 @@ Route::get('/', 'inicioController@inicio');
 //grupo de rutas las cuales solo podran ser accedidas por administradores
 Route::group(['middleware' => ['admin']], function(){
     Route::get('admin',function(){
-        return view('admindash');
+        return view('admininicio');
     });
 });
