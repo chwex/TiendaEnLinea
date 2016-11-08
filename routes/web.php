@@ -20,5 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('admin', function () { return view('admin_template'); });
-Route::get('/Micarrito','VistasController@carrito');
-Route::get('/MetodoE','VistasController@envio');
+Route::get('micarrito','VistasController@carrito');
+Route::get('metodoe','VistasController@envio');
