@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\productos;						#Anadi la tabla 
+use App\productos;						#Añadi la tabla 
 use Illuminate\Http\Request;
 
 class productosController extends Controller
@@ -17,7 +17,7 @@ class productosController extends Controller
   public function guardar(Request $datos)
   {
   	$productos= new productos;
-    $productos->nombre=$datos->input('nombre');
+    $productos->nombreproducto=$datos->input('nombre');
     #$productos->categoria=$datos->input('categoria');    checar por el id de la categoria
     $productos->inventario=$datos->input('inventario');
     $productos->precio=$datos->input('precio');
