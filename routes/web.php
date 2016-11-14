@@ -42,4 +42,6 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/registrarCategoria', 'categoriasController@registrarCategoria');
 	Route::post('/guardarCategoria', 'categoriasController@guardarCategoria');
 	Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
+    Route::get('image-upload','ImageController@imageUpload');
+    Route::post('image-upload','ImageController@imageUploadPost');
 });
