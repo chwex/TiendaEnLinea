@@ -15,7 +15,7 @@
 			<label for="nombre">Nombre</label>
 			<input type="text" class="form-control" name="nombre" required>
 		</div>	
-		<input type="submit" class="btn btn-primary" value="Registrar">
+		<input type="submit" class="btn btn-primary" value="Registrar">	
 		<a href="{{url('/mostrarCategoria')}}" class="btn btn-danger">Cancelar</a>
 	</form>
 @stop
