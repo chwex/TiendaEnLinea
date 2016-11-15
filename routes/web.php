@@ -17,9 +17,8 @@ Auth::routes();
 // aca afuera van las rutas que no requieren de un usuario tipo administrador
 //por ejemplo las rutas de las vistas de los productos y del carrito.
 
-//Route::get('/home', 'HomeController@index');
-Route::get('/guardarCategoria', '/categoriasController@guardar');   #}agregar categoria nueva
-Route::get('/guardarProducto', '/productosController@guardar');    #agregar producto
+  
+Route::get('/guardarProducto', 'productosController@guardar');
 Route::get('/home', 'HomeController@index');
 
 
@@ -44,4 +43,10 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('admin',function(){
         return view('admininicio');
     });
+    #Rutas para ver, agregar y mostrar las categorias al administrador
+    Route::get('/registrarCategoria', 'categoriasController@registrarCategoria');
+	Route::post('/guardarCategoria', 'categoriasController@guardarCategoria');
+	Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
+    Route::get('image-upload','ImageController@imageUpload');
+    Route::post('image-upload','ImageController@imageUploadPost');
 });

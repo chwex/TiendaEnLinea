@@ -9,13 +9,23 @@ use DB;
 
 class categoriasController extends Controller
 {
-	 public function guardar(Request $datos)
+	#Redirige al formulario de categoria
+	public function registrarCategoria(){
+		return view ('/registrarCategoria');
+
+	}
+	#Guarda una nueva categoria en la BD y redirige a mostrar la lista
+	public function guardarCategoria(Request $datos)
 	 {
-    	$categoria= new categorias;
-    	$categoria->nombre=$datos->input('nombre');
-		$categoria->save();
+    	$nuevo= new categorias;
+    	$nuevo->nombrecategoria=$datos->input('nombre');
+		$nuevo->save();
 
-
-    	return Redirect('/inicio');
+    	return Redirect('/mostrarCategoria');
+    }
+    #Retona las categorias existentes al administrador
+    public function mostrarCategoria(){
+    	$categorias=categorias::all();
+    	return view ('mostrarCategoria', compact('categorias'));
     }
 }
