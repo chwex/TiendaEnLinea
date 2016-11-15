@@ -28,4 +28,12 @@ class categoriasController extends Controller
     	$categorias=categorias::all();
     	return view ('mostrarCategoria', compact('categorias'));
     }
+		public function asignarProductos($id){
+				$productos = new Productos
+				$prodcutos->nombre = Input::get('nombre')
+				$productos->save()
+				$productos = new Productos
+				$productos->save()
+				$productos->productos()->associate($productos);
+    }
 }

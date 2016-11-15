@@ -1,8 +1,7 @@
 @extends('layouts.admindash')
 
 @section('encabezadocontenido')
-	
-	<h2>Crear Producto en Categoria: {{$categoria->nombre}}</h2>
+		<h3>Crear Productos<h3>
 		<small>Descripcion Opcional</small>
 
 	</h1>
@@ -16,34 +15,34 @@
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
 			<input type="text" class="form-control" name="nomber" required>
-		</div>	
-		
+		</div>
+
 <!--Parte incompleta para mostrar las categorias en combobox-->
 		<div class="container">
 			<div class="dropdown">
     			<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categorias
     			<span class="caret"></span></button>
     			 	@foreach($categorias as $c)
-            			<li><a href="{{url('/listadoCategoria')}}/{{$c->id}}">{{$c->nombrecategoria}}</a></li>
+            			<li><a href="{{url('/listadoCategoria')}}/{{$c->categoriaid}}">{{$c->nombrecategoria}}</a></li>
             		@endforeach
 			</div>
 		</div>
-	
+
 		<div class="form-group">
 			<label for="descripcion">Descripcion</label>
-			<input type="text" class="form-control" name="descripcion" required> 
+			<input type="text" class="form-control" name="descripcion" required>
 		</div>
 		<div class="form-group">
 			<label for="Inventario">Inventario</label>
-			<input type="text" class="form-control" name="inventario" required> 
+			<input type="text" class="form-control" name="inventario" required>
 		</div>
 		<div class="form-group">
 			<label for="precio">Precio</label>
-			<input type="text" class="form-control" name="precio" required> 
+			<input type="text" class="form-control" name="precio" required>
 		</div>
 			<div class="form-group">
 			<label for="imagen">Imagen</label>
-			<input type="image" class="form-control" name="imagen" required> 
+			<input type="image" class="form-control" name="imagen" required>
 		</div>
 
 

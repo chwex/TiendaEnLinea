@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\productos;						#Añadi la tabla 
+use App\productos;
+use App\categorias;				#Añadi la tabla
 use Illuminate\Http\Request;
+use DB;
 
 class productosController extends Controller
 {
@@ -10,7 +12,7 @@ class productosController extends Controller
 
 
  public function productosPopulares(){
- 
+
 
  }
 
@@ -21,9 +23,14 @@ class productosController extends Controller
     #$productos->categoria=$datos->input('categoria');    checar por el id de la categoria
     $productos->inventario=$datos->input('inventario');
     $productos->precio=$datos->input('precio');
-		
-	return Redirect('categoria');	
-        
+
+	return Redirect('categoria');
+
+  }
+  public function  registrarProducto(){
+    $categorias=categorias::all();
+    return view ('registrarProducto', compact('categorias'));
+
   }
 
 }
