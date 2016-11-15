@@ -11,14 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
+
+// aca afuera van las rutas que no requieren de un usuario tipo administrador
+//por ejemplo las rutas de las vistas de los productos y del carrito.  
+
+  
+Route::get('/guardarProducto', 'productosController@guardar');
 Route::get('/home', 'HomeController@index');
 
 Route::get('admin', function () { return view('admin_template'); });
 Route::get('/Micarrito','VistasController@carrito');
 Route::get('/MetodoE','VistasController@envio');
+
+Route::get('/registroUsuario','usuarioController@registroUsuario');
