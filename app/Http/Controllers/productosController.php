@@ -39,7 +39,8 @@ public function productosPopulares(){
 
 
 	return Redirect('/mostrarProducto');
-  }
+  }   
+      //Regresar toodos los productos existentes
      public function mostrarProducto(){
       $productos=productos::all();
       return view ('mostrarProducto', compact('productos'));
