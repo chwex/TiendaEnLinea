@@ -16,6 +16,6 @@ class inicioController extends Controller
         $categorias=categorias::all();
         $productosPop = DB::select("SELECT * FROM productos LIMIT 6");
 
-        return view('inicio', compact('categorias','productosPop'));
+        return view('paginaprincipal', compact('categorias','productosPop'));
     }
 }
