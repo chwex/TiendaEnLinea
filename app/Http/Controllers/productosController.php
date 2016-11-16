@@ -26,7 +26,7 @@ public function productosPopulares(){
 
   	$nuevo= new productos;
     $nuevo->nombreproducto=$datos->input('nombre');
-    $nuevo->categoriaid=$datos->input('categoria');     #verificar como trabaja
+    $nuevo->categoriaid=$datos->input('categoriaid');     #verificar como trabaja
     $nuevo->descripcion=$datos->input('descripcion');
     $nuevo->inventario=$datos->input('inventario');
     $nuevo->precio=$datos->input('precio');

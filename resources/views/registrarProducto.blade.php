@@ -16,9 +16,9 @@
 			<input type="text" class="form-control" name="nombre" required>
 			<label for="categorias">Categorias</label>
 
-			<select type="text" class="form-control" name="lstcategorias" required>
+			<select type="text" class="form-control" name="categoriaid" required>
 				@foreach ($categorias as $c)
-				<option value="{{$c->categoriaid}}">{{$c->nombrecategoria}}</option>
+				<option value="{{$c->idcategoria}}">{{$c->nombrecategoria}}</option>
 				@endforeach
 			</select>
 		</div>
