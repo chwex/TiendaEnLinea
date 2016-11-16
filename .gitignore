@@ -5,3 +5,5 @@
 Homestead.json
 Homestead.yaml
 esquemadb.sql
+.env
+
