@@ -1,16 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\productos;						#Añadi la tabla 
+use App\productos;
+use App\categorias;				#Añadi la tabla
 use Illuminate\Http\Request;
-use App\categorias;
 use DB;
 
 class productosController extends Controller
 {
     //Funcion que obtenga los 6 juegos mejor vendidos para mostrar en la pagina de inicio
 public function productosPopulares(){
- 
+
+
 
  }
  #Redirige al formulario de producto
@@ -22,10 +23,11 @@ public function productosPopulares(){
 
   public function guardarProducto(Request $datos)
   {
+
   	$nuevo= new productos;
     $nuevo->nombreproducto=$datos->input('nombre');
     $nuevo->categoriaid=$datos->input('categoria');     #verificar como trabaja
-    $nuevo->descripcion=$datos->input('descripcion'); 
+    $nuevo->descripcion=$datos->input('descripcion');
     $nuevo->inventario=$datos->input('inventario');
     $nuevo->precio=$datos->input('precio');
 
@@ -35,11 +37,12 @@ public function productosPopulares(){
       ->get();*/
     $nuevo->save();
 
-		
-	return Redirect('/mostrarProducto');	
+
+	return Redirect('/mostrarProducto');
   }
      public function mostrarProducto(){
-      $categorias=productos::all();
+      $productos=productos::all();
       return view ('mostrarProducto', compact('productos'));
     }
+
 }

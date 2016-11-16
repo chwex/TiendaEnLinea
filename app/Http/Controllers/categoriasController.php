@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\categorias;
+use App\productos;
 use DB;
 
 class categoriasController extends Controller
@@ -28,4 +29,13 @@ class categoriasController extends Controller
     	$categorias=categorias::all();
     	return view ('mostrarCategoria', compact('categorias'));
     }
+
+/*	public function asignarProductos($id){
+			$productos = new Productos
+			$prodcutos->nombre = Input::get('nombre')
+			$productos->save()
+			$productos = new Productos
+			$productos->save()
+			$productos->productos()->associate($productos);
+}*/
 }
