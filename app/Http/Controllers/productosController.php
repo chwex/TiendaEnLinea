@@ -44,5 +44,14 @@ public function productosPopulares(){
       $productos=productos::all();
       return view ('mostrarProducto', compact('productos'));
     }
+     public function mostrarCateProd($id)
+    {
+        $productos = DB::select("SELECT p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
+                     FROM productos p
+                     INNER JOIN categorias c ON c.idcategoria = p.idproducto
+                     WHERE p.idproducto = c.idcategoria AND p.idproducto = " . $id);
+
+        return view('mostrarProducto', compact('productos'));
+    }
 
 }

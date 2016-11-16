@@ -47,8 +47,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/registrarCategoria', 'categoriasController@registrarCategoria');
     Route::get('/registrarProducto','productosController@registrarProducto');
 	Route::post('/guardarCategoria', 'categoriasController@guardarCategoria');
-	Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
-    Route::get('/mostrarProducto', 'productosController@mostrarProducto');
+	
     Route::get('/registrarProducto', 'productosController@registrarProducto');
     Route::post('/guardarProducto', 'productosController@guardarProducto');
     Route::get('image-upload','ImageController@imageUpload');
@@ -56,7 +55,8 @@ Route::group(['middleware' => ['admin']], function(){
 
 	
 
-
+Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
+Route::get('/mostrar/{id}', 'productosController@mostrarCateProd');
 
 
 });
