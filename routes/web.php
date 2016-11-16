@@ -58,6 +58,6 @@ Route::group(['middleware' => ['admin']], function(){
 
 Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
 Route::get('/mostrar/{id}', 'productosController@mostrarCateProd');
-
+Route::get('/mostrarProducto','productosController@mostrarProducto');
 
 });
