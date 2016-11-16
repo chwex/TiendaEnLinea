@@ -47,9 +47,4 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('image-upload','ImageController@imageUpload');
     Route::post('image-upload','ImageController@imageUploadPost');
 
-	
-
-
-
-
 });
