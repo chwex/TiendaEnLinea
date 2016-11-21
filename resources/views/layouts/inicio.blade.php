@@ -33,7 +33,7 @@
 
 <div class="container-fluid">
   <div class="row">
-	  <img src="{{ asset("/Imagenes/banner.png") }}" class="img-responsive">
+	 <a href="{{url('/')}}"><img src="{{ asset("/Imagenes/banner.png") }}" class="img-responsive"></a> 
   </div>
 </div>
 

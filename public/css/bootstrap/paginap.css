@@ -1,0 +1,30 @@
+.containerr
+{
+    position: relative;
+    overflow: hidden;
+}
+ 
+.containerr span
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+}
+ 
+.containerr ul, .containerr li
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+ 
+.containerr li
+{
+    display: none;
+}
+ 
+.containerr li.active
+{
+    display: inline;
+}
