@@ -54,5 +54,19 @@ public function productosPopulares(){
 
         return view('mostrarProducto', compact('productos'));
     }
+    public function productoVisitante(){
+      $productos=productos::all();
+      return view('/productoVisitante', compact('productos'));
+    }
+    public function mostrarProdVis($id)
+    {
+        $categorias = categorias::all();
+        $productos = DB::select("SELECT p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
+                     FROM productos p
+                     INNER JOIN categorias c ON c.idcategoria = p.idproducto
+                     WHERE p.idproducto = c.idcategoria AND p.idproducto = " . $id);
+
+        return view('productoVisitante', compact('productos','categorias'));
+    }
 
 }

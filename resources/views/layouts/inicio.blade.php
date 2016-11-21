@@ -54,12 +54,12 @@
         <li class=" dropdown">
           <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            @foreach($categorias as $c)
-            <li><a href="{{url('/listadoCategoria')}}/{{$c->id}}">{{$c->nombrecategoria}}</a></li>
+             @foreach($categorias as $c)
+            <li><a href="{{url('/mostrare')}}/{{$c->idcategoria}}">{{$c->nombrecategoria}}</a></li>
             @endforeach
           </ul>
         </li>
-      </ul>
+      </ul> 
       <ul class="nav navbar-nav navbar-right">
          <!-- Authentication Links -->
         @if (Auth::guest())
@@ -93,8 +93,10 @@
   </div>
 </nav>
 
-@yield('contenido')
-
+  <div class="container">
+  </br></br>
+      @yield('contenido')
+  </div>
 <footer class="container-fluid text-center">
   <p>Games Bond Copyright</p>
   <div class="container">
