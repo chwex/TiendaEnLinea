@@ -54,5 +54,9 @@ public function productosPopulares(){
 
         return view('mostrarProducto', compact('productos'));
     }
+    /*public function detallesProducto(){
+      return view('/productoIndividual');    
+    }*/
+
 
 }
