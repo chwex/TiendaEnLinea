@@ -60,4 +60,7 @@ Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
 Route::get('/mostrar/{id}', 'productosController@mostrarCateProd');
 Route::get('/mostrarProducto','productosController@mostrarProducto');
 
+Route::get('/mostrare/{id}', 'productosController@mostrarProdVis');
+Route::get('/productoVisitante','productosController@productoVisitante');
 });
+
