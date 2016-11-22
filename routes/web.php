@@ -28,7 +28,7 @@ Route::get('metodoe','VistasController@envio');
 
 Route::get('/registroUsuario','usuarioController@registroUsuario');
 
-//Route::get('/productoIndividual', 'productosController@detallesProducto');
+Route::get('/productoIndividual', 'productosController@detallesProducto');
 
 Route::get('/', 'inicioController@inicio');
 

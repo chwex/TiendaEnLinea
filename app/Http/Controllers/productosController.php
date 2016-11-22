@@ -41,7 +41,8 @@ public function productosPopulares(){
 	return Redirect('/mostrarProducto');
   }   
       //Regresar toodos los productos existentes
-     public function mostrarProducto(){
+    public function mostrarProducto()
+    {
       $productos=productos::all();
       return view ('mostrarProducto', compact('productos'));
     }
@@ -54,9 +55,12 @@ public function productosPopulares(){
 
         return view('mostrarProducto', compact('productos'));
     }
-    /*public function detallesProducto(){
-      return view('/productoIndividual');    
-    }*/
+    public function detallesProducto(){
+      $productos= productos:: all();
+      $categoria= categorias::all();      
+      return view('/productoIndividual', compact('productos', 'categorias'));    
+    }
+ 
 
 
 }
