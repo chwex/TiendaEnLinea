@@ -64,7 +64,7 @@ public function productosPopulares(){
 
     public function detallesProducto(){
       $productos= productos:: all();
-      $categoria= categorias::all();      
+      $categorias= categorias::all();      
       return view('/productoIndividual', compact('productos', 'categorias'));    
     }
 
