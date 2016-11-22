@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class VistasController extends Controller
 {
     public function carrito(){
+    	
       return view('/Vistas/Micarrito');
     }
     public function envio(){
