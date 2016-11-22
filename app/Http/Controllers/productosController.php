@@ -83,6 +83,7 @@ public function productosPopulares(){
         $categorias=DB::select("SELECT * FROM categorias WHERE idcategoria = " . $id);
         $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $id);    
         $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$id);
+
         return view('/productoIndividual', compact('productos','categorias','comentarios'));
     }
 
