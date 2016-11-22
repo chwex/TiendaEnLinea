@@ -30,8 +30,6 @@ Route::get('/registroUsuario','usuarioController@registroUsuario');
 Route::get('/productoIndividual', 'productosController@detallesProducto');
 
 
-
-
 Route::get('/', 'inicioController@inicio');
 
 
@@ -69,3 +67,5 @@ Route::get('/productoVisitante','productosController@productoVisitante');
 Route::get('/productos/{id}','productosController@productos');
 });
 
+//agregar producto a carrito
+Route::get('/agregarCarrito/{idproducto}', 'productosController@agregarCarrito');

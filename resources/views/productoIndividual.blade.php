@@ -40,7 +40,9 @@
 					</div> 
 					<div class="col-xs-12 col-sm-4">
 						<h2><strong>${{$p->precio}} </strong></h2>                    
-						<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Comprar </button>
+						<form action="{{ url('/agregarCarrito') }}">
+							<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Agregar a carrito </button>
+						</form>
 					</div>
 
 					 <!-- Contact form -->
@@ -64,6 +66,7 @@
                 						<button type="submit" class="btn btn-primary btn-shadow btn-rounded w-md" id="send">Enviar</button>
               						</div> 
             					</div> <!-- /row -->
+
 
           					</form> <!-- /form -->
         				</div> <!-- end col -->
