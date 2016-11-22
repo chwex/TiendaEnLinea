@@ -84,7 +84,7 @@ public function productosPopulares(){
     }
     public  function productos($id)
     {
-        $categorias=categorias::all();
+        $categorias=DB::select("SELECT * FROM categorias WHERE idcategoria = " . $id);
         $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $id);    
         return view('/productoIndividual', compact('productos','categorias'));
     }
