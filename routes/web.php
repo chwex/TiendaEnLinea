@@ -28,7 +28,8 @@ Route::get('metodoe','VistasController@envio');
 
 Route::get('/registroUsuario','usuarioController@registroUsuario');
 
-Route::get('/productoIndividual', 'productosController@detallesProducto');
+
+
 
 Route::get('/', 'inicioController@inicio');
 
@@ -62,5 +63,9 @@ Route::get('/mostrarProducto','productosController@mostrarProducto');
 
 Route::get('/mostrare/{id}', 'productosController@mostrarProdVis');
 Route::get('/productoVisitante','productosController@productoVisitante');
+
+Route::get('/productoIndividual', 'productosController@detallesProducto');
+
+Route::get('/productos/{id}','productosController@productos');
 });
 

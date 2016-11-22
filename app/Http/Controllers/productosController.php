@@ -6,6 +6,12 @@ use App\categorias;				#Añadi la tabla
 use Illuminate\Http\Request;
 use DB;
 
+use App\Http\Requests;
+use App\http\Controllers\Controller; 
+use Session;
+use Redirect;
+
+
 class productosController extends Controller
 {
     //Funcion que obtenga los 6 juegos mejor vendidos para mostrar en la pagina de inicio
@@ -55,12 +61,12 @@ public function productosPopulares(){
 
         return view('mostrarProducto', compact('productos'));
     }
+
     public function detallesProducto(){
       $productos= productos:: all();
       $categoria= categorias::all();      
       return view('/productoIndividual', compact('productos', 'categorias'));    
     }
- 
 
     public function productoVisitante(){
       $productos=productos::all();
@@ -76,6 +82,14 @@ public function productosPopulares(){
 
         return view('productoVisitante', compact('productos','categorias'));
     }
+    public  function productos($id)
+    {
+        $categorias=categorias::all();
+        $productos=DB::select('idproducto','nombreproducto','categoriaid','descripcion','inventario','precio','imagen')->where('idproducto','=',$id)->get();    
+        //$tipo=tipos::all();
+        return view('/productoIndividual', compact('productos','categorias'));
+    }
+
 
 
 }
