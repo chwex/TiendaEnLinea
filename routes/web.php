@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::get('admin', function () { return view('admin_template'); });
-Route::get('micarrito','VistasController@carrito');
+Route::get('micarrito','productosController@obtenerCarrito');
 Route::get('metodoe','VistasController@envio');
 
 Route::get('/registroUsuario','usuarioController@registroUsuario');
