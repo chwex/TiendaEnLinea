@@ -84,11 +84,25 @@ public function productosPopulares(){
         return view('/productoIndividual', compact('productos','categorias'));
     }
 
-    public  function agregarCarrito($idproducto)
+    public function agregarCarrito($idproducto)
     {
         $categorias=categorias::all();
         $idusuario = \Auth::user()->id;
         $existe = DB::select('SELECT * FROM carritousuario WHERE idusuario=? AND idproducto=?',[$idusuario, $idproducto]);
+        
+        if($existe->isEmpty())
+        {
+            DB::insert('insert into carritousuario (idusuario, idproducto) values (?, ?)', [$idusuario, $idproducto]);
+        }
+           
+        return view('/productoIndividual', compact('productos'));
+    }
+
+    public function obtenerCarrito($idUsuario)
+    {
+        $categorias=categorias::all();
+        $idusuario = \Auth::user()->id;
+        $productosCarrito = DB::select('SELECT * FROM carritousuario WHERE idusuario=? AND idproducto=?',[$idusuario, $idproducto]);
         
         if($existe->isEmpty())
         {
