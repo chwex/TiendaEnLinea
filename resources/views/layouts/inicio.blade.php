@@ -86,7 +86,7 @@
                 </ul>
             </li>
         @endif
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <li><a href="{{url('/micarrito')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
       </ul>
       
     </div>
