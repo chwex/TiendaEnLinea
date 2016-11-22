@@ -44,7 +44,9 @@
 				<div class="col-xs-12 col-sm-4">
 					<h2><strong>${{$p->precio}} </strong></h2>                    
 					<p><small>Precio</small></p>
-					<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Comprar </button>
+					<form action="{{ url('/agregarCarrito') }}">
+						<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Comprar </button>
+					</form>
 				</div><!--/col-->
 
 				</div>
