@@ -157,9 +157,9 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">Menú</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class=""><a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Gestion de Productos</span></a></li>
-        <li class=""><a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Gestion de Categorias</span></a></li>
-        <li class=""><a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Gestion de Usuarios</span></a></li>
+        <li class=""><a href="{{url('/mostrarProducto')}}"><i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Gestion de Productos</span></a></li>
+        <li class=""><a href="{{url('/mostrarCategoria')}}"><i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Gestion de Categorias</span></a></li>
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>
