@@ -27,7 +27,7 @@
             <div class="panel-body">
 			  <div class="row">
 			  <div class="col-xs-12 col-sm-4 text-center">
-					<img src="C:\xampp\htdocs\TiendaEnLinea\public\Imagenes\Productos\brotherh.jgp" alt="" class="center-block img-circle img-responsive">
+					<img src="{{ asset("/Imagenes/Productos/$p->imagen")}}" alt="" class="center-block img-circle img-responsive">
 					<ul class="list-inline ratings text-center" title="Ratings">
 					  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
 					  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>

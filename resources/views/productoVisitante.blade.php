@@ -157,7 +157,7 @@
           <div class="shop__thumb">
             <a href="#">
               <div class="shop-thumb__img">
-                <a href="{{url('/productos')}}/{{$p->idproducto}}" ><img src="{{$p-> imagen}}" class="img-responsive" alt="..."></a>
+                <a href="{{url('/productos')}}/{{$p->idproducto}}" ><img src="{{ asset("/Imagenes/Productos/$p->imagen") }}" class="img-responsive" alt="..."></a>
               </div>
               <h5 class="shop-thumb__title">
                 {{$p->nombreproducto}}

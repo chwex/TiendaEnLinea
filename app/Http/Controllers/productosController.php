@@ -75,17 +75,17 @@ public function productosPopulares(){
     public function mostrarProdVis($id)
     {
         $categorias = categorias::all();
-        $productos = DB::select("SELECT p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
+        $productos = DB::select("SELECT p.idproducto, p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
                      FROM productos p
                      INNER JOIN categorias c ON c.idcategoria = p.idproducto
-                     WHERE p.idproducto = c.idcategoria AND p.idproducto = " . $id);
+                     WHERE p.categoriaid = " . $id);
 
         return view('productoVisitante', compact('productos','categorias'));
     }
     public  function productos($id)
     {
         $categorias=categorias::all();
-        $productos=DB::select('idproducto','nombreproducto','categoriaid','descripcion','inventario','precio','imagen')->where('idproducto','=',$id)->get();    
+        $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $id);    
         //$tipo=tipos::all();
         return view('/productoIndividual', compact('productos','categorias'));
     }
