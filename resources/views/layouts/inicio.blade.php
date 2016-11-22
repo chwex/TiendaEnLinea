@@ -31,6 +31,7 @@
 <!--<div class="jumbotron" style="background-image:url('{{ asset("/Imagenes/banner.png") }}'); background-size: 100% auto; padding-bottom: 9%;">
 </div>-->
 
+
 <div class="container-fluid">
   <div class="row">
 	 <a href="{{url('/')}}"><img src="{{ asset("/Imagenes/banner.png") }}" class="img-responsive"></a> 

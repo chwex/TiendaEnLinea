@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ asset("/css/mproducto.css") }}" >
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-4 col-md-3">
       <form>
@@ -157,7 +157,7 @@
           <div class="shop__thumb">
             <a href="#">
               <div class="shop-thumb__img">
-                <img src="http://lorempixel.com/400/400/technics/1/" class="img-responsive" alt="...">
+                <a href="{{url('/productos')}}/{{$p->idproducto}}" ><img src="{{$p-> imagen}}" class="img-responsive" alt="..."></a>
               </div>
               <h5 class="shop-thumb__title">
                 {{$p->nombreproducto}}
