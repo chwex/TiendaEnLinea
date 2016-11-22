@@ -12,5 +12,6 @@ class VistasController extends Controller
     public function envio(){
       return view('/Vistas/MetodoE');
     }
+       
 
 }
