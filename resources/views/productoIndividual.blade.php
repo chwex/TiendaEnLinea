@@ -40,7 +40,7 @@
 					</div> 
 					<div class="col-xs-12 col-sm-4">
 						<h2><strong>${{$p->precio}} </strong></h2>                    
-						<form action="{{ url('/agregarCarrito') }}">
+						<form action="{{ url('/agregarCarrito')}}/{{$p->idproducto}}">
 							<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Agregar a carrito </button>
 						</form>
 					</div>
