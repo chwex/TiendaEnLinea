@@ -2,17 +2,6 @@
 
 
 @section('contenido')
-
-<!--h1> <center> Producto: </center></h1-->
-
-  <!--Referente a ProductoIndividual-->
-    <!--meta name="generator" content="Bootply" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet"-->
-
-    <!--Aqui termina e.e-->
 <div class="container-fluid">
   <div class="row">
   	<div class="col-md-12">
@@ -81,4 +70,4 @@
   </div>
 </div>
 	
-
+@endsection

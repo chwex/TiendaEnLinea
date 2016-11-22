@@ -92,27 +92,6 @@
 							</div>
 						</div>
 					</div>
-	  				<!--
-	  				<div class="col-md-0">
-	  					<div class="col-xs-1">
-	  					</br></br>
-	  						<span class="glyphicon glyphicon-triangle-right"></span>	
-	  					</div>
-	  				</div>
-	  				<div class="col-md-2">
-	 	  				<div class="col-xs-14">
-							<div class="form-group">
-	
-								<label for="total">Total</label>
-								<div class="input-group">
-									<span class="input-group-addon">$</span>
-									<input type="text" class="form-control" name="total" id="total">
-										<span class="input-group-addon">.00</span>
-								</div>	
-							</div>
-						</div>
-					</div>
-					-->
 	  			</div>
 			</div>
 		</div>
@@ -166,27 +145,6 @@
 							</div>
 						</div>
 	  				</div>
-	  				<!--
-	  				<div class="col-md-0">
-	  					<div class="col-xs-1">
-	  					</br></br>
-	  						<span class="glyphicon glyphicon-triangle-right"></span>	
-	  					</div>
-	  				</div>
-	  				<div class="col-md-2">
-	 	  				<div class="col-xs-14">
-							<div class="form-group">
-	
-								<label for="total">Total</label>
-								<div class="input-group">
-									<span class="input-group-addon">$</span>
-									<input type="text" class="form-control" name="total" id="total">
-										<span class="input-group-addon">.00</span>
-								</div>	
-							</div>
-						</div>
-					</div>
-					-->
 	  			</div>
 	  				<hr size="2px" width="100%" style="color: black" align="left" noshade="noshade">
 			</div>

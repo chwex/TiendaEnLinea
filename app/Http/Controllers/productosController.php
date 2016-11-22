@@ -86,7 +86,6 @@ public function productosPopulares(){
     {
         $categorias=categorias::all();
         $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $id);    
-        //$tipo=tipos::all();
         return view('/productoIndividual', compact('productos','categorias'));
     }
 
