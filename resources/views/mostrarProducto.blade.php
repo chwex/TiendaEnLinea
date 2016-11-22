@@ -148,8 +148,9 @@
                                 </div>                  
                             </div>
                         </div>
-                        @endforeach
+                        @endforeach   
                     </div>
+                 <a href="{{url('/registrarProducto')}}"> <input  value="Registrar el producto" class="btn btn-primary" name="registrar"></a>
                 </div>
             </div>
         </div>

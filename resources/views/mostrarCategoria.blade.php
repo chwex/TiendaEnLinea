@@ -40,7 +40,8 @@
         <a href="{{url('/mostrar')}}/{{$c->idcategoria}}" type="button" class="btn btn-circle" style="font-size: 100%; background-color: rgb(38, 128, 184);">{{$c->nombrecategoria}}</a>
         @endforeach
     </div>
-
+ <a href="{{url('/registrarCategoria')}}"> <input  value="Registrar categoria" class="btn btn-primary" name="registrar"></a>
+               
 </div>
 
 
