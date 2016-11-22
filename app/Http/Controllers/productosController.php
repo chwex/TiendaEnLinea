@@ -47,6 +47,7 @@ public function productosPopulares(){
       $productos=productos::all();
       return view ('mostrarProducto', compact('productos'));
     }
+    
      public function mostrarCateProd($id)
     {
         $productos = DB::select("SELECT p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
