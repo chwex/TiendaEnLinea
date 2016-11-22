@@ -97,6 +97,7 @@
   <div class="container">
   </br></br>
       @yield('contenido')
+      </br></br>
   </div>
 <footer class="container-fluid text-center">
   <p>Games Bond Copyright</p>
