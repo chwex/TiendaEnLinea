@@ -68,13 +68,20 @@ public function productosPopulares(){
       $productos=productos::all();
       return view('/productoVisitante', compact('productos'));
     }
-    public function mostrarProdVis($id)
+    public function mostrarProdVis($idc)
     {
+        if ( \Auth::check()) {
+            $idu = \Auth::user()->id;
+        }   
+        else{
+            $idu = 9;
+        }
+        DB::select('call sp_visitacategoria(?,?)',array($idu,$idc));
         $categorias = categorias::all();
         $productos = DB::select("SELECT p.idproducto, p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
                      FROM productos p
                      INNER JOIN categorias c ON c.idcategoria = p.idproducto
-                     WHERE p.categoriaid = " . $id);
+                     WHERE p.categoriaid = " . $idc);
 
         return view('productoVisitante', compact('productos','categorias'));
     }

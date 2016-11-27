@@ -17,55 +17,45 @@ Auth::routes();
 // aca afuera van las rutas que no requieren de un usuario tipo administrador
 //por ejemplo las rutas de las vistas de los productos y del carrito.
 
-
-Route::get('/guardarProducto', 'productosController@guardar');
-Route::get('/home', 'HomeController@index');
-
-
+//Rutas Admin
 Route::get('admin', function () { return view('admin_template'); });
-Route::get('micarrito','productosController@obtenerCarrito');
-Route::get('metodoe','VistasController@envio');
 
-Route::get('/registroUsuario','usuarioController@registroUsuario');
-Route::get('/productoIndividual', 'productosController@detallesProducto');
-
-
-Route::get('/', 'inicioController@inicio');
-
-
-//grupo de rutas las cuales solo podran ser accedidas por administradores
 Route::group(['middleware' => ['admin']], function(){
-
-    //aqui pondran las rutas que se usaran por los administradores ya sea el agregar categoria, agregar producto
-
-    //esta ruta manda a llamar directamente la vista admin inicio, esta vista la pueden usar como ejemplo
-    //para el uso del dashboard
     Route::get('admin',function(){
         return view('admininicio');
     });
+
     #Rutas para ver, agregar y mostrar las categorias al administrador
     Route::get('/registrarCategoria', 'categoriasController@registrarCategoria');
     Route::get('/registrarProducto','productosController@registrarProducto');
 	Route::post('/guardarCategoria', 'categoriasController@guardarCategoria');
-	
     Route::get('/registrarProducto', 'productosController@registrarProducto');
     Route::post('/guardarProducto', 'productosController@guardarProducto');
     Route::get('image-upload','ImageController@imageUpload');
     Route::post('image-upload','ImageController@imageUploadPost');
+    Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
+    Route::post('/guardarComentario','comentariosController@guardar');
+    Route::get('/agregarCarrito/{idproducto}', 'productosController@agregarCarrito');
+});
 
+//Rutas registro
+Route::get('/registroUsuario','usuarioController@registroUsuario');
+//Rutas inicio
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'inicioController@inicio');
+//Rutas carrito
+Route::get('micarrito','productosController@obtenerCarrito');
+//Rutas ventas
+Route::get('metodoe','VistasController@envio');
+//Rutas categorias
 
-	
-
-Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
+//Rutas productos
+Route::get('/guardarProducto', 'productosController@guardar');
+Route::get('/productoIndividual', 'productosController@detallesProducto');
 Route::get('/mostrar/{id}', 'productosController@mostrarCateProd');
 Route::get('/mostrarProducto','productosController@mostrarProducto');
-
 Route::get('/mostrare/{id}', 'productosController@mostrarProdVis');
 Route::get('/productoVisitante','productosController@productoVisitante');
-
-
 Route::get('/productos/{id}','productosController@productos');
-});
-Route::post('/guardarComentario','comentariosController@guardar');
-//agregar producto a carrito
-Route::get('/agregarCarrito/{idproducto}', 'productosController@agregarCarrito');
+
+

@@ -30,12 +30,11 @@ class categoriasController extends Controller
     	return view ('mostrarCategoria', compact('categorias'));
     }
 
-/*	public function asignarProductos($id){
-			$productos = new Productos
-			$prodcutos->nombre = Input::get('nombre')
-			$productos->save()
-			$productos = new Productos
-			$productos->save()
-			$productos->productos()->associate($productos);
-}*/
+
+	//agreagar visita
+	public function visitaCategoria(){
+		DB::select('exec my_stored_procedure(?,?,..)',array($Param1,$param2));
+	}
+
+
 }
