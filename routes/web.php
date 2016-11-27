@@ -67,5 +67,6 @@ Route::get('/productoVisitante','productosController@productoVisitante');
 Route::get('/productos/{id}','productosController@productos');
 });
 Route::post('/guardarComentario','comentariosController@guardar');
+Route::post('/guardarVoto','comentariosController@guardar');
 //agregar producto a carrito
 Route::get('/agregarCarrito/{idproducto}', 'productosController@agregarCarrito');

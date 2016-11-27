@@ -17,7 +17,7 @@ class categoriasController extends Controller
 	}
 	#Guarda una nueva categoria en la BD y redirige a mostrar la lista
 	public function guardarCategoria(Request $datos)
-	 {
+	 {	
     	$nuevo= new categorias;
     	$nuevo->nombrecategoria=$datos->input('nombre');
 		$nuevo->save();
