@@ -15,6 +15,7 @@
 	<div class="container"> 
 		<div class="row-fluid">
 			<div class="row">
+				<div class="idrow" hidden>{{$pc->idproducto}}</div>
 	  			<div class="col-md-20">
 	  				<div class="col-md-3">
 		  				<div class="col-xs-10">
@@ -42,7 +43,6 @@
 								<div class="input-group">
 									<span class="input-group-addon">$</span>
 									<input type="text" class="form-control" name="precio" id="precio" value="{{$pc->precio}}">
-										<span class="input-group-addon">.00</span>
 								</div>	
 							</div>
 						</div>
@@ -52,7 +52,7 @@
 							<div class="form-group">
 								<label for="cantidad">Cantidad</label>
 								<div class="input-group">
-									<input type="text" class="form-control" name="cantidad" id="cantidad" size="10">		
+									<input type="text" class="form-control cantidades" name="cantidad" value="1"  size="10">		
 								</div>	
 							</div>
 						</div>
@@ -63,26 +63,31 @@
 		</div>
 	</div>
 	@endforeach
-	  				<div class="col-md-3 pull-right">
-						<div class="col-xs-10">
-							<div class="form-group">
-									<label for="total">Total a pagar</label>
-								<div class="input-group">
-									<span class="input-group-addon">$</span>
-									<input type="text" class="form-control" name="total" id="total">
-									<span class="input-group-addon">.00</span>
-								</div>
-								<div class="form-group">
-									</br>
-									<button type="button" class="btn btn-success">Finalizar compra </button>
-								</div>							
-							</div>
-						</div>
-					</div>
-
+	<div class="col-md-3 pull-right">
+		<div class="col-xs-10">
+			<div class="form-group">
+					<label for="total">Total a pagar</label>
+				<div class="input-group">
+					<span class="input-group-addon">$</span>
+					<input type="text" class="form-control" name="total" id="total">
+				</div>
+				<div class="form-group">
+					</br>
+					<button type="button" class="btn btn-success">Finalizar compra </button>
+				</div>							
+			</div>
+		</div>
+	</div>
 @endsection
 
+@section('scripts')
+<script>
+	var rawproductos = '<?php echo json_encode($productosCarrito); ?>';
+	var prodAgregados = JSON.parse(rawproductos);
+</script>
 
+<script src="{{ asset("/js/ventas.js") }}"></script>
+@endsection
 
 
 	{{--<div class="container">

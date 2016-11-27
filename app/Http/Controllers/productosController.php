@@ -15,40 +15,39 @@ use Redirect;
 class productosController extends Controller
 {
     //Funcion que obtenga los 6 juegos mejor vendidos para mostrar en la pagina de inicio
-public function productosPopulares(){
+    public function productosPopulares(){
 
 
 
- }
- #Redirige al formulario de producto
-  public function registrarProducto()
-  {
-    $categorias=categorias::all();
-    return view ('/registrarProducto', compact('categorias'));
-  }
+    }
+    #Redirige al formulario de producto
+    public function registrarProducto()
+    {
+        $categorias=categorias::all();
+        return view ('/registrarProducto', compact('categorias'));
+    }
 
-  public function guardarProducto(Request $datos)
-  {
+    public function guardarProducto(Request $datos)
+    {
+        $nuevo= new productos;
+        $nuevo->nombreproducto=$datos->input('nombre');
+        $nuevo->categoriaid=$datos->input('categoriaid');     #verificar como trabaja
+        $nuevo->descripcion=$datos->input('descripcion');
+        $nuevo->inventario=$datos->input('inventario');
+        $nuevo->precio=$datos->input('precio');
+        $nuevo->save();
 
-  	$nuevo= new productos;
-    $nuevo->nombreproducto=$datos->input('nombre');
-    $nuevo->categoriaid=$datos->input('categoriaid');     #verificar como trabaja
-    $nuevo->descripcion=$datos->input('descripcion');
-    $nuevo->inventario=$datos->input('inventario');
-    $nuevo->precio=$datos->input('precio');
-    $nuevo->save();
 
-
-	return Redirect('/mostrarProducto');
-  }   
+        return Redirect('/mostrarProducto');
+    }   
       //Regresar toodos los productos existentes
     public function mostrarProducto()
     {
-      $productos=productos::all();
-      return view ('mostrarProducto', compact('productos'));
+        $productos=productos::all();
+        return view ('mostrarProducto', compact('productos'));
     }
     
-     public function mostrarCateProd($id)
+    public function mostrarCateProd($id)
     {
         $productos = DB::select("SELECT p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
                      FROM productos p
@@ -68,6 +67,7 @@ public function productosPopulares(){
       $productos=productos::all();
       return view('/productoVisitante', compact('productos'));
     }
+
     public function mostrarProdVis($idc)
     {
         if ( \Auth::check()) {
@@ -130,5 +130,4 @@ public function productosPopulares(){
 
         return view('/Vistas/Micarrito', compact('productosCarrito', 'categorias'));
     }
-
 }

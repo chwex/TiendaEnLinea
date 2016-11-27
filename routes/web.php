@@ -36,6 +36,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
     Route::post('/guardarComentario','comentariosController@guardar');
     Route::get('/agregarCarrito/{idproducto}', 'productosController@agregarCarrito');
+    //Route::get('/');
 });
 
 //Rutas registro
