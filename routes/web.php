@@ -37,6 +37,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('/guardarComentario','comentariosController@guardar');
     Route::get('/agregarCarrito/{idproducto}', 'productosController@agregarCarrito');
     //Route::get('/');
+    Route::post('/guardarVoto','comentariosController@guardar');
 });
 
 //Rutas registro
@@ -58,5 +59,4 @@ Route::get('/mostrarProducto','productosController@mostrarProducto');
 Route::get('/mostrare/{id}', 'productosController@mostrarProdVis');
 Route::get('/productoVisitante','productosController@productoVisitante');
 Route::get('/productos/{id}','productosController@productos');
-
 

@@ -151,7 +151,7 @@
                 </ul>
             </div>
             <div class="col-xs-4">
-                <p class="text-muted pull-right">© 2015 Company Name. All rights reserved</p>
+                <p class="text-muted pull-right">© 2016 Company Name. All rights reserved</p>
             </div>
         </div>
 </div>
