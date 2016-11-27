@@ -85,11 +85,18 @@ public function productosPopulares(){
 
         return view('productoVisitante', compact('productos','categorias'));
     }
-    public  function productos($id)
+    public  function productos($idp)
     {
-        $categorias=DB::select("SELECT * FROM categorias WHERE idcategoria = " . $id);
-        $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $id);    
-        $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$id);
+        if ( \Auth::check()) {
+            $idu = \Auth::user()->id;
+        }   
+        else{
+            $idu = 9;
+        }
+        DB::select('call sp_visitaproducto(?,?)',array($idu,$idp));
+        $categorias=DB::select("SELECT * FROM categorias WHERE idcategoria = " . $idp);
+        $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $idp);    
+        $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$idp);
 
         return view('/productoIndividual', compact('productos','categorias','comentarios'));
     }
