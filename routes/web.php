@@ -38,6 +38,8 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/agregarCarrito/{idproducto}', 'productosController@agregarCarrito');
     //Route::get('/');
     Route::post('/guardarVoto','comentariosController@guardar');
+    //Rutas carrito
+    Route::get('micarrito','productosController@obtenerCarrito');
 });
 
 //Rutas registro
@@ -45,8 +47,7 @@ Route::get('/registroUsuario','usuarioController@registroUsuario');
 //Rutas inicio
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'inicioController@inicio');
-//Rutas carrito
-Route::get('micarrito','productosController@obtenerCarrito');
+
 //Rutas ventas
 Route::get('metodoe','VistasController@envio');
 //Rutas categorias

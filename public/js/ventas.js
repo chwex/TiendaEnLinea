@@ -34,13 +34,13 @@ $(document).ready(function(){
 });
 
 function actualuzarCalculos(){
-    importeTotal = 0;
+    total = 0;
     for(var index in prodAgregados) { 
-        importeTotal += (Math.round(parseFloat(prodAgregados[index].cantidad) * parseFloat(prodAgregados[index].precio)));
+        total += (Math.round(parseFloat(prodAgregados[index].cantidad) * parseFloat(prodAgregados[index].precio)));
     }
 
     //actualizar total
-    $('#total').html('$'+formNum(total));
+    $('#total').val(formNum(total));
     
 }
 
