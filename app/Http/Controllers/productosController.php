@@ -8,7 +8,6 @@ use DB;
 use App\comentarios;
 use App\calificaciones;
 use App\Http\Requests;
-use App\http\Controllers\Controller; 
 use Session;
 use Redirect;
 
