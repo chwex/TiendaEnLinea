@@ -16,10 +16,7 @@ use Redirect;
 class calificacionesController extends Controller
 {
       public function guardar($idusuario, $idproducto, $valor){
-    	
-
     	//Guardar en BD
-
     	 // Creamos una nueva calificacion
         $calificaciones             = new \App\calificaciones;
         $calificaciones->idusuario  = $idusuario;

@@ -9,8 +9,7 @@ class usuarioController extends Controller
 {
     public function registroUsuario()
     {
-
-    return view('/registroUsuario');
+    	return view('/registroUsuario');
     }
 
      public function guardar(Request $datos)

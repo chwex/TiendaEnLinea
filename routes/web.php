@@ -35,18 +35,18 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('image-upload','ImageController@imageUploadPost');
     Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
     Route::post('/guardarComentario','comentariosController@guardar');
-    Route::get('/agregarCarrito/{idproducto}', 'productosController@agregarCarrito');
+    Route::get('/agregarCarrito/{idproducto}', 'carritousuarioController@agregarCarrito');
     //Route::get('/');
     Route::post('/guardarVoto','comentariosController@guardar');
     //Rutas carrito
-    Route::get('micarrito','productosController@obtenerCarrito');
+    Route::get('micarrito','carritousuarioController@obtenerCarrito');
 });
 
 //Rutas registro
 Route::get('/registroUsuario','usuarioController@registroUsuario');
 //Rutas inicio
 Route::get('/home', 'HomeController@index');
-Route::get('/', 'inicioController@inicio');
+Route::get('/', 'productosController@inicio');
 
 //Rutas ventas
 Route::get('metodoe','VistasController@envio');
@@ -55,9 +55,8 @@ Route::get('metodoe','VistasController@envio');
 //Rutas productos
 Route::get('/guardarProducto', 'productosController@guardar');
 Route::get('/productoIndividual', 'productosController@detallesProducto');
-Route::get('/mostrar/{id}', 'productosController@mostrarCateProd');
 Route::get('/mostrarProducto','productosController@mostrarProducto');
-Route::get('/mostrare/{id}', 'productosController@mostrarProdVis');
+Route::get('/mostrare/{id}', 'categoriasController@mostrarProdVis');
 Route::get('/productoVisitante','productosController@productoVisitante');
 Route::get('/productos/{id}','productosController@productos');
 

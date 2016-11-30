@@ -14,6 +14,13 @@ use Redirect;
 
 class productosController extends Controller
 {
+    public function inicio()
+    {
+        $categorias=categorias::all();
+        $productosPop = DB::select("SELECT * FROM productos LIMIT 6");
+
+        return view('paginaprincipal', compact('categorias','productosPop'));
+    }
     //Funcion que obtenga los 6 juegos mejor vendidos para mostrar en la pagina de inicio
     public function productosPopulares(){
 
@@ -46,16 +53,6 @@ class productosController extends Controller
         $productos=productos::all();
         return view ('mostrarProducto', compact('productos'));
     }
-    
-    public function mostrarCateProd($id)
-    {
-        $productos = DB::select("SELECT p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
-                     FROM productos p
-                     INNER JOIN categorias c ON c.idcategoria = p.idproducto
-                     WHERE p.idproducto = c.idcategoria AND p.idproducto = " . $id);
-
-        return view('mostrarProducto', compact('productos'));
-    }
 
     public function detallesProducto(){
       $productos= productos:: all();
@@ -68,23 +65,6 @@ class productosController extends Controller
       return view('/productoVisitante', compact('productos'));
     }
 
-    public function mostrarProdVis($idc)
-    {
-        if ( \Auth::check()) {
-            $idu = \Auth::user()->id;
-        }   
-        else{
-            $idu = 9;
-        }
-        DB::select('call sp_visitacategoria(?,?)',array($idu,$idc));
-        $categorias = categorias::all();
-        $productos = DB::select("SELECT p.idproducto, p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
-                     FROM productos p
-                     INNER JOIN categorias c ON c.idcategoria = p.idproducto
-                     WHERE p.categoriaid = " . $idc);
-
-        return view('productoVisitante', compact('productos','categorias'));
-    }
     public  function productos($idp)
     {
         if ( \Auth::check()) {
@@ -100,41 +80,12 @@ class productosController extends Controller
 
         return view('/productoIndividual', compact('productos','categorias','comentarios'));
     }
+
     public function voto($id){
       $categorias=DB::select("SELECT * FROM categorias WHERE idcategoria = " . $id);
       $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $id);    
       $calificaciones=DB::select("SELECT * FROM calificaciones c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$id);
 
         return view('/productoIndividual', compact('productos','categorias','calificaciones'));
-    }
-
-    public function agregarCarrito($idproducto)
-    {
-        $categorias=categorias::all();
-        $idusuario = \Auth::user()->id;
-        $existe = DB::select('SELECT * FROM carritousuario WHERE idusuario=' . $idusuario .  ' AND idproducto=' . $idproducto. ';');
-        if(count($existe) == 0)
-        {
-            DB::insert('insert into carritousuario (idusuario, idproducto) values (' . $idusuario . ',' . $idproducto . ');');
-        }
-
-        $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $idproducto);
-        $categorias = categorias::all();
-
-        return Redirect('/productos/' . $idproducto);
-    }
-
-    public function obtenerCarrito()
-    {
-        $categorias=categorias::all();
-        $idusuario = \Auth::user()->id;
-        $productosCarrito = DB::select("select p.idproducto, u.id, p.nombreproducto, p.descripcion, p.inventario, p.precio, p.imagen, cat.nombrecategoria 
-                        from carritousuario cu
-                        inner join users u on cu.idusuario = u.id
-                        inner join productos p on cu.idproducto = p.idproducto
-                        inner join categorias cat on p.categoriaid = cat.idcategoria
-                        where u.id = " . $idusuario);
-
-        return view('/Vistas/Micarrito', compact('productosCarrito', 'categorias'));
     }
 }
