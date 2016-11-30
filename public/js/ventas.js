@@ -5,8 +5,6 @@ $( window ).load(function() {
 });
 
 $(document).ready(function(){
-    
-
      $('.cantidades').on('change',  function(){
          //obtengo el id del producto ligado a la cantidad
         var idArtRow = $(this).closest('.row').children('.idrow').html();
@@ -15,7 +13,7 @@ $(document).ready(function(){
         var artMod = $.grep(prodAgregados, function(e) { return e.id == idArtRow })
 
         //si el articulo tiene existencia subir la cantidad a la seleccionada. sino, bajar la cantidad a la existencia disponible
-        if(artMod[0].existencia >= parseInt($(this).val()))
+        if(artMod[0].inventario >= parseInt($(this).val()))
         {
             //actualizar el 
             for(var index in prodAgregados) { 
@@ -27,9 +25,32 @@ $(document).ready(function(){
         }
         else
         {
-            $(this).val(artMod[0].existencia);
+            $(this).val(artMod[0].inventario);
             GenerarMensaje(3,'El artículo seleccionado no cuenta con existencia, favor de verificar');
         }
+    });
+
+    $('#btnFinalizar').on('click',function(){
+       if ($("input[type=radio]:checked").length > 0) {
+           $.ajax({
+            data:  {_token:$('#token').val(),folio:folioVenta,idCliente:clienteSeleccionado[0].id,total:formNum(total),articulos:articulosAgregados,idventa:ventaId},
+            url:   'guardarVenta',
+            type:  'post',
+            success:  function (data) {
+                if(data != false)
+                    window.location='ventas';
+                else
+                    GenerarMensaje(3,'La existencia de los productos es insuficiente, favor de verificar.');
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data));
+            }
+        });
+       }
+       else
+       {
+           GenerarMensaje(3,'“Debe seleccionar un plazo para realizar el pago de su compra.');
+       }
     });
 });
 
