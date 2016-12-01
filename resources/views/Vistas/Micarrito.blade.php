@@ -29,7 +29,7 @@
 	  					<div class="col-xs-1">
 		  					<div class="form-group">
 	  							<label for="comment">Descripcion:</label>
-	  							<textarea name="textarea"  class="form-control" id="comment" >{{$pc->descripcion}}</textarea>
+	  							<textarea name="textarea" id="comment" >{{$pc->descripcion}}</textarea>
 	  							<a href="#" class="btn btn-info btn-lg">
 	        						<span class="glyphicon glyphicon-trash"></span> Trash 
 	      						</a>

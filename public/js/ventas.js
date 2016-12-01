@@ -10,7 +10,7 @@ $(document).ready(function(){
         var idArtRow = $(this).closest('.row').children('.idrow').html();
 
         //obtengo el producto a modificar
-        var artMod = $.grep(prodAgregados, function(e) { return e.id == idArtRow })
+        var artMod = $.grep(prodAgregados, function(e) { return e.idproducto == parseInt(idArtRow) })
 
         //si el articulo tiene existencia subir la cantidad a la seleccionada. sino, bajar la cantidad a la existencia disponible
         if(artMod[0].inventario >= parseInt($(this).val()))
@@ -74,4 +74,3 @@ function initProd(){
 function formNum(valor){
     return ((Math.round(((Math.round(valor*100)/5)*5)/5)*5)/100).toFixed(2);
 }
-
