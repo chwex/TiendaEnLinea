@@ -52,6 +52,35 @@ $(document).ready(function(){
            GenerarMensaje(3,'“Debe seleccionar un plazo para realizar el pago de su compra.');
        }
     });
+
+    $('#btnRemover').on('click', function(){ 
+        // obtner el id del producto desde el html
+        var idrmv = $(this).closest('.row').children('.idrow').html();
+
+        //remover renglón de la vista
+        $(this).closest('.row').remove();
+
+        //remover el producto del objeto prodAgregados
+        prodAgregados = $.grep(prodAgregados, function(e) { return e.id != idrmv });
+
+        //cambiar estado del producto en el carrito
+        $.ajax({
+            data:  {_token:$('#token').val(),idproducto:idrmv},
+            url:   'removerProductoCarrito',
+            type:  'post',
+            success:  function (data) {
+                if(data != false){
+                    GenerarMensaje(1,'Se eliminó el producto del carrito.');
+                    actualuzarCalculos();
+                }
+                else
+                    GenerarMensaje(3,'La existencia de los productos es insuficiente, favor de verificar.');
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data));
+            }
+        });
+    });
 });
 
 function actualuzarCalculos(){

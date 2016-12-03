@@ -31,9 +31,6 @@
 		  					<div class="form-group">
 	  							<label for="comment">Descripcion:</label>
 	  							<textarea name="textarea" id="comment" disabled>{{$pc->descripcion}}</textarea>
-	  							<a href="#" class="btn btn-info btn-lg">
-	        						<span class="glyphicon glyphicon-trash"></span> Trash 
-	      						</a>
 							</div>
 	  					</div>	
 	  				</div>
@@ -53,12 +50,23 @@
 							<div class="form-group">
 								<label for="cantidad">Cantidad</label>
 								<div class="input-group">
-									<input type="text" class="form-control cantidades" name="cantidad" value="1"  size="10">		
+									<input type="text" class="form-control cantidades" name="cantidad" value="1"  size="10">	
 								</div>	
 							</div>
 						</div>
 	  				</div>
-
+					  <div class="col-md-1">
+	 	  				<div class="col-xs-14">
+							<div class="form-group">
+								<label for="cantidad"></label>
+								<div class="input-group">
+									<a href="#" class="btn btn-danger" id="btnRemover">
+	        							<span class="glyphicon glyphicon-remove"></span> Remover
+	      							</a>	
+								</div>	
+							</div>
+						</div>
+	  				</div>
 	  			</div>
 			</div>
 		</div>

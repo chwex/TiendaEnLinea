@@ -60,4 +60,5 @@ Route::get('/mostrare/{id}', 'categoriasController@mostrarProdVis');
 Route::get('/productoVisitante','productosController@productoVisitante');
 Route::get('/productos/{id}','productosController@productos');
 Route::post('/generarVenta', 'ventasController@generarVenta');
+Route::post('/removerProductoCarrito', 'carritousuarioController@removerProducto');
 
