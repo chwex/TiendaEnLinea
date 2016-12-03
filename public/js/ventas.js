@@ -17,7 +17,7 @@ $(document).ready(function(){
         {
             //actualizar el 
             for(var index in prodAgregados) { 
-                if(prodAgregados[index].id == artMod[0].id){
+                if(prodAgregados[index].idproducto == artMod[0].idproducto){
                     prodAgregados[index].cantidad = parseInt($(this).val(),10);
                 } 
             }
@@ -31,14 +31,14 @@ $(document).ready(function(){
     });
 
     $('#btnFinalizar').on('click',function(){
-       if ($("input[type=radio]:checked").length > 0) {
+       if (prodAgregados.length > 0) {
            $.ajax({
-            data:  {_token:$('#token').val(),folio:folioVenta,idCliente:clienteSeleccionado[0].id,total:formNum(total),articulos:articulosAgregados,idventa:ventaId},
-            url:   'guardarVenta',
+            data:  {_token:$('#token').val(),productos:prodAgregados,totalvta:total},
+            url:   'generarVenta',
             type:  'post',
             success:  function (data) {
                 if(data != false)
-                    window.location='ventas';
+                    window.location='';
                 else
                     GenerarMensaje(3,'La existencia de los productos es insuficiente, favor de verificar.');
             },
@@ -57,7 +57,7 @@ $(document).ready(function(){
 function actualuzarCalculos(){
     total = 0;
     for(var index in prodAgregados) { 
-        total += (Math.round(parseFloat(prodAgregados[index].cantidad) * parseFloat(prodAgregados[index].precio)));
+        total += formNum(prodAgregados[index].cantidad) * formNum(prodAgregados[index].precio);
     }
 
     //actualizar total

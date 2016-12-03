@@ -157,10 +157,15 @@
 </div>
 </footer>
 
-<script src="{{ asset("/adminlte/plugins/jQuery/jquery-2.2.3.min.js") }}"></script>
-<script src="{{ asset("/adminlte/bootstrap/js/bootstrap.min.js") }}"></script>
+    <script src="{{ asset("/adminlte/plugins/jQuery/jquery-2.2.3.min.js") }}"></script>
+    <script src="{{ asset("/adminlte/bootstrap/js/bootstrap.min.js") }}"></script>
+    <script src="{{ asset("/js/inicio.js") }}"></script>
 
-@yield('scripts')
+    @yield('scripts')
 
+
+    @if(session()->has('mensaje'))
+    <script>GenerarMensaje({{ Session::get('nivel') }},'{{ Session::get('mensaje') }}')</script>
+    @endif
 </body>
 </html>

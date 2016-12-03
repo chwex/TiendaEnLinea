@@ -88,4 +88,39 @@ class productosController extends Controller
 
         return view('/productoIndividual', compact('productos','categorias','calificaciones'));
     }
+
+    public function validarExistencia($lstArt){
+        //obtener todos los ids de los articulos de la venta
+        $idArts = array_column($lstArt, 'id');
+        $val = true;
+        foreach($idArts as $id)
+        {
+            //obtener el articulo con el id
+            $articulo = $this->obtenerObjporId($id, $lstArt);
+
+            //seleccionar la existencia del articulo
+            $existencia = DB::select("select existencia from `articulos` where id=" . $id . ";");
+            
+            //validar existencia
+            $ext = (int)$existencia - (int)$articulo['existencia'];
+
+            //si ext es mayor o igual a 0, pasar al siguiente id, sino salr del bucle y abortar la venta
+            if($ext < 0)
+            {
+                $val = false;
+                break;
+            } 
+        }
+
+        if($val){
+            //restar existencia
+            foreach($lstArt as $art)
+            {
+                DB::update("update articulos set existencia = existencia - " . $art['existencia'] . " where id =" . (int)$art['id'] . ";");
+            }
+
+            return true;
+        }
+        else{return false;}
+    }
 }

@@ -3,27 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\productos;
+use App\ventas;
+use DB;
 
 class ventasController extends Controller
 {
     public function generarVenta(Request $request){
-        $vtaJSON = $request->all();
+        $vtaJSON = (array)$request->all();
         //checar que haya existencia de los articulos
         $artInv = true;
         //$artInv = (new articulosController)->validarExistencia($vtaJSON['articulos']);
         
-
         //si hay existencia, se genera la venta
         if($artInv){
-            $id = $vtaJSON['idventa'];
-            $venta = ventas::find($id);
-            $venta->folio = $vtaJSON['folio'];
-            $venta->total = $vtaJSON['total'];
-            $venta->idcliente = $vtaJSON['idCliente'];
-            $dt = new DateTime();
-            $venta->fecha= $dt->format('Y-m-d H:i:s');
+            //guardar venta
+            //generar codigo de venta
+            $claveaa = DB::select("SELECT id FROM ventas order by id desc limit 1");
+            $clavefinal = (string)((int)$claveaa[0]->id + 1);
+            
+            while (strlen($clavefinal) < 5):
+                $clavefinal = "0" . $clavefinal;
+            endwhile;
 
+            $clavefinal = "V-" . $clavefinal;
+
+            //DB::insert('insert into ventas (folio) values ' . $clavefinal . ';');
+            $venta = new ventas;
+            $venta->folioventa = $clavefinal;
+            $venta->total = $vtaJSON['totalvta'];
+            $venta->idusuario = \Auth::user()->id;
             $venta->save();
+            $ventaid = $venta->id;
+
+
+           foreach($vtaJSON['productos'] as $p){
+               DB::insert('insert into productosventas (idventa, idproducto, cantidad, precio) values (?, ?, ?, ?)', [$ventaid, $p['idproducto'], $p['cantidad'], $p['precio']]);
+           }
             
             \Session::flash('mensaje', 'Se guardo la venta correctamente.');
             \Session::flash('nivel', '1');
