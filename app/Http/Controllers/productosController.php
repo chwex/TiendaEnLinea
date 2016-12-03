@@ -74,7 +74,7 @@ class productosController extends Controller
             $idu = 9;
         }
         DB::select('call sp_visitaproducto(?,?)',array($idu,$idp));
-        $categorias=DB::select("SELECT * FROM categorias WHERE idcategoria = " . $idp);
+        $categorias=DB::select("SELECT * FROM categorias");
         $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $idp);    
         $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$idp);
 
