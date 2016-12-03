@@ -47,7 +47,8 @@ class productosController extends Controller
 
         return Redirect('/mostrarProducto');
     }   
-      //Regresar toodos los productos existentes
+
+    //Regresar toodos los productos existentes
     public function mostrarProducto()
     {
         $productos=productos::all();
@@ -73,9 +74,12 @@ class productosController extends Controller
         else{
             $idu = 9;
         }
+
+        //registrar visita del usuario al producto en la bd
         DB::select('call sp_visitaproducto(?,?)',array($idu,$idp));
+        
         $categorias=DB::select("SELECT * FROM categorias");
-        $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $idp);    
+        $productos=DB::select("SELECT *, c.nombrecategoria FROM productos p INNER JOIN categorias c on p.categoriaid = c.idcategoria WHERE idproducto = " . $idp);    
         $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$idp);
 
         return view('/productoIndividual', compact('productos','categorias','comentarios'));
