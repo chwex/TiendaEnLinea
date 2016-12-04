@@ -14,7 +14,7 @@ class ventasController extends Controller
 
         //checar que haya existencia de los articulos
         $artInv = true;
-        //$artInv = (new articulosController)->validarExistencia($vtaJSON['articulos']);
+        $artInv = (new productosController)->validarExistencia($vtaJSON['productos']);
         
         //si hay existencia, se genera la venta
         if($artInv){

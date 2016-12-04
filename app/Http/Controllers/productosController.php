@@ -95,7 +95,7 @@ class productosController extends Controller
 
     public function validarExistencia($lstArt){
         //obtener todos los ids de los articulos de la venta
-        $idArts = array_column($lstArt, 'id');
+        $idArts = array_column($lstArt, 'idproducto');
         $val = true;
         foreach($idArts as $id)
         {
@@ -103,10 +103,10 @@ class productosController extends Controller
             $articulo = $this->obtenerObjporId($id, $lstArt);
 
             //seleccionar la existencia del articulo
-            $existencia = DB::select("select existencia from `articulos` where id=" . $id . ";");
+            $existencia = DB::select("select inventario from `productos` where idproducto=" . $id . ";");
             
             //validar existencia
-            $ext = (int)$existencia - (int)$articulo['existencia'];
+            $ext = (int)$existencia[0]->inventario - (int)$articulo['cantidad'];
 
             //si ext es mayor o igual a 0, pasar al siguiente id, sino salr del bucle y abortar la venta
             if($ext < 0)
@@ -116,15 +116,27 @@ class productosController extends Controller
             } 
         }
 
+        //si existe inventario para todos los productos descontrar la existencia de todos los productos en la venta
         if($val){
             //restar existencia
             foreach($lstArt as $art)
             {
-                DB::update("update articulos set existencia = existencia - " . $art['existencia'] . " where id =" . (int)$art['id'] . ";");
+                DB::update("update productos set inventario = inventario - " . $art['cantidad'] . " where idproducto = " . (int)$art['id'] . ";");
             }
 
             return true;
         }
         else{return false;}
+    }
+
+    function obtenerObjporId($id, $lstArt){
+        foreach($lstArt as $obj)
+        {
+            if($obj['idproducto'] == $id){
+                return $obj;
+            }
+        }
+
+        return false;
     }
 }
