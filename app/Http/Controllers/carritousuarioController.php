@@ -17,10 +17,10 @@ class carritousuarioController extends Controller
     {
         $categorias=categorias::all();
         $idusuario = \Auth::user()->id;
-        $existe = DB::select('SELECT * FROM carritousuario WHERE idusuario=' . $idusuario .  ' AND idproducto=' . $idproducto. ';');
+        $existe = DB::select('SELECT * FROM carritousuario WHERE idusuario=' . $idusuario .  ' AND idproducto=' . $idproducto. ' AND estado = 1;');
         if(count($existe) == 0)
         {
-            DB::insert('insert into carritousuario (idusuario, idproducto) values (' . $idusuario . ',' . $idproducto . ');');
+            DB::insert('insert into carritousuario (idusuario, idproducto, estado) values (' . $idusuario . ',' . $idproducto . ', 1);');
         }
 
         $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $idproducto);
@@ -39,8 +39,23 @@ class carritousuarioController extends Controller
                         inner join users u on cu.idusuario = u.id
                         inner join productos p on cu.idproducto = p.idproducto
                         inner join categorias cat on p.categoriaid = cat.idcategoria
-                        where u.id = " . $idusuario);
+                        where cu.estado = 1 and u.id = " . $idusuario);
 
         return view('/Vistas/Micarrito', compact('productosCarrito', 'categorias'));
+    }
+
+    public function removerProducto(Request $request)
+    {
+        $prodJSON = $request->all();
+        $prodID = $prodJSON['idproducto'];
+        DB::update('update carritousuario set estado = 0 where idproducto = ' . $prodID);
+
+        \Session::flash('mensaje', 'Se elimino el producto del carrito.');
+        \Session::flash('nivel', '1');
+
+        return \Response::json( array(
+            'venta' => true,
+        ));
+
     }
 }

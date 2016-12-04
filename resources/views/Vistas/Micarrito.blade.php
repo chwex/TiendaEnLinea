@@ -7,6 +7,7 @@
 				</br></br>
 				<h2 align="left"><b>Mi carrito</b></h2>
 				<hr size="2px" style="color: black" align="left" width="100%" noshade="noshade">
+				<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 			</div>
 		</div>
 	</div>
@@ -29,10 +30,7 @@
 	  					<div class="col-xs-1">
 		  					<div class="form-group">
 	  							<label for="comment">Descripcion:</label>
-	  							<textarea name="textarea"  class="form-control" id="comment" >{{$pc->descripcion}}</textarea>
-	  							<a href="#" class="btn btn-info btn-lg">
-	        						<span class="glyphicon glyphicon-trash"></span> Trash 
-	      						</a>
+	  							<textarea name="textarea" id="comment" disabled>{{$pc->descripcion}}</textarea>
 							</div>
 	  					</div>	
 	  				</div>
@@ -42,7 +40,7 @@
 								<label for="precio">Precio</label>
 								<div class="input-group">
 									<span class="input-group-addon">$</span>
-									<input type="text" class="form-control" name="precio" id="precio" value="{{$pc->precio}}">
+									<input type="text" class="form-control" name="precio" id="precio" value="{{$pc->precio}}" disabled>
 								</div>	
 							</div>
 						</div>
@@ -52,12 +50,23 @@
 							<div class="form-group">
 								<label for="cantidad">Cantidad</label>
 								<div class="input-group">
-									<input type="text" class="form-control cantidades" name="cantidad" value="1"  size="10">		
+									<input type="text" class="form-control cantidades" name="cantidad" value="1"  size="10">	
 								</div>	
 							</div>
 						</div>
 	  				</div>
-
+					  <div class="col-md-1">
+	 	  				<div class="col-xs-14">
+							<div class="form-group">
+								<label for="cantidad"></label>
+								<div class="input-group">
+									<a href="#" class="btn btn-danger" id="btnRemover">
+	        							<span class="glyphicon glyphicon-remove"></span> Remover
+	      							</a>	
+								</div>	
+							</div>
+						</div>
+	  				</div>
 	  			</div>
 			</div>
 		</div>
@@ -69,11 +78,11 @@
 					<label for="total">Total a pagar</label>
 				<div class="input-group">
 					<span class="input-group-addon">$</span>
-					<input type="text" class="form-control" name="total" id="total">
+					<input type="text" class="form-control" name="total" id="total" disabled>
 				</div>
 				<div class="form-group">
 					</br>
-					<button type="button" class="btn btn-success">Finalizar compra </button>
+					<button type="button" class="btn btn-success" id="btnFinalizar">Finalizar compra </button>
 				</div>							
 			</div>
 		</div>

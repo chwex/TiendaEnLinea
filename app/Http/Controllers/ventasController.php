@@ -3,27 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\productos;
+use App\ventas;
+use DB;
 
 class ventasController extends Controller
 {
     public function generarVenta(Request $request){
-        $vtaJSON = $request->all();
+        $vtaJSON = (array)$request->all();
+
         //checar que haya existencia de los articulos
         $artInv = true;
-        //$artInv = (new articulosController)->validarExistencia($vtaJSON['articulos']);
+        $artInv = (new productosController)->validarExistencia($vtaJSON['productos']);
         
-
         //si hay existencia, se genera la venta
         if($artInv){
-            $id = $vtaJSON['idventa'];
-            $venta = ventas::find($id);
-            $venta->folio = $vtaJSON['folio'];
-            $venta->total = $vtaJSON['total'];
-            $venta->idcliente = $vtaJSON['idCliente'];
-            $dt = new DateTime();
-            $venta->fecha= $dt->format('Y-m-d H:i:s');
 
+            //generar codigo de venta
+            $claveaa = DB::select("SELECT id FROM ventas order by id desc limit 1");
+            $clavefinal = (string)((int)$claveaa[0]->id + 1);
+            
+            while (strlen($clavefinal) < 5):
+                $clavefinal = "0" . $clavefinal;
+            endwhile;
+
+            $clavefinal = "V-" . $clavefinal;
+
+            //guardar venta
+            $venta = new ventas;
+            $venta->folioventa = $clavefinal;
+            $venta->total = $vtaJSON['totalvta'];
+            $venta->idusuario = \Auth::user()->id;
             $venta->save();
+            $ventaid = $venta->id;
+
+            //ligar la informacion de los productos con la venta
+           foreach($vtaJSON['productos'] as $p){
+               DB::insert('insert into productosventas (idventa, idproducto, cantidad, precio) values (?, ?, ?, ?)', [$ventaid, $p['idproducto'], $p['cantidad'], $p['precio']]);
+               DB::update('update carritousuario set estado = 0 where idproducto = ' . $p['idproducto']);
+           }
             
             \Session::flash('mensaje', 'Se guardo la venta correctamente.');
             \Session::flash('nivel', '1');

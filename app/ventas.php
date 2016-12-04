@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ventas extends Model
 {
-    private  $table ='ventas';
+    protected  $table ='ventas';
+    public $timestamps=false;
 }
