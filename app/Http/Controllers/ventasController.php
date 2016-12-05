@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use App\productos;
 use App\ventas;
 use DB;
+use App\Mail\correcompra;
+use Illuminate\Support\Facades\Mail;
+
 
 class ventasController extends Controller
 {
     public function generarVenta(Request $request){
         $vtaJSON = (array)$request->all();
 
+        
         //checar que haya existencia de los articulos
         $artInv = true;
         $artInv = (new productosController)->validarExistencia($vtaJSON['productos']);
@@ -42,7 +46,10 @@ class ventasController extends Controller
                DB::insert('insert into productosventas (idventa, idproducto, cantidad, precio) values (?, ?, ?, ?)', [$ventaid, $p['idproducto'], $p['cantidad'], $p['precio']]);
                DB::update('update carritousuario set estado = 0 where idproducto = ' . $p['idproducto']);
            }
-            
+           
+
+            Mail::to(\Auth::user()->email)->send(new correcompra());
+
             \Session::flash('mensaje', 'Se guardo la venta correctamente.');
             \Session::flash('nivel', '1');
 

@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class confirmacionVenta extends Mailable
+class KryptoniteFound extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,10 @@ class confirmacionVenta extends Mailable
      *
      * @return void
      */
-    public function __construct()
+     public $user;
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -28,8 +29,6 @@ class confirmacionVenta extends Mailable
      */
     public function build()
     {
-        $total=80;
-        return $this->view('mail.confirmacionCorreo', compact('total'));
-
+        return $this->view('Correo.confirmacionCorreo');
     }
 }

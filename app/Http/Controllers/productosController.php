@@ -10,7 +10,11 @@ use App\calificaciones;
 use App\Http\Requests;
 use Session;
 use Redirect;
-use Mail;
+use App\Mail\correcompra;
+use Illuminate\Support\Facades\Mail;
+
+
+
 
 
 class productosController extends Controller
@@ -19,9 +23,6 @@ class productosController extends Controller
     {
         $categorias=categorias::all();
         $productosPop = DB::select("SELECT * FROM productos LIMIT 6");
-
-        Mail::to('david_kook@hotmail.com')->send(new confirmacionVenta);
-
         return view('paginaprincipal', compact('categorias','productosPop'));
     }
     //Funcion que obtenga los 6 juegos mejor vendidos para mostrar en la pagina de inicio
