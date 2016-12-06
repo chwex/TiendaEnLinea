@@ -82,7 +82,7 @@
 				</div>
 				<div class="form-group">
 					</br>
-					<button type="button" class="btn btn-success" id="btnFinalizar">Finalizar compra </button>
+			<button type="button" class="btn btn-success" id="btnFinalizar">Finalizar compra </button>
 				</div>							
 			</div>
 		</div>

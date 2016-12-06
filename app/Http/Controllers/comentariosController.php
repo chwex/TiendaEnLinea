@@ -53,4 +53,5 @@ class comentariosController extends Controller
     	return Redirect('/productos/'.$idproducto);
 
     } 
+    
 }
