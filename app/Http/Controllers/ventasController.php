@@ -62,7 +62,6 @@ class ventasController extends Controller
                 'venta' => false,
             ));
         }
-        
     }
 
     public function obtenerVentas(){
