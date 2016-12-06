@@ -144,6 +144,7 @@ desired effect
         <li class="header">Menú</li>
         <!-- Optionally, you can add icons to the links -->
         <li class=""><a href="{{url('/mostrarProducto')}}"><i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Gestion de Productos</span></a></li>
+        <li class=""><a href="{{url('/mostrarVentas')}}"><i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Gestion de Ventas</span></a></li>
         <li class=""><a href="{{url('/mostrarCategoria')}}"><i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Gestion de Categorias</span></a></li>
         <li class=""><a href="{{url('/')}}"><i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Vista Usuario</span></a></li>
         

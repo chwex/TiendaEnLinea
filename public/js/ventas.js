@@ -53,7 +53,7 @@ $(document).ready(function(){
        }
     });
 
-    $('#btnRemover').on('click', function(){ 
+    $('.btnRemover').on('click', function(){ 
         // obtner el id del producto desde el html
         var idrmv = $(this).closest('.row').children('.idrow').html();
 
@@ -61,7 +61,8 @@ $(document).ready(function(){
         $(this).closest('.row').remove();
 
         //remover el producto del objeto prodAgregados
-        prodAgregados = $.grep(prodAgregados, function(e) { return e.id != idrmv });
+        prodAgregados = $.grep(prodAgregados, function(e) { return e.idproducto != idrmv });
+        actualuzarCalculos();
 
         //cambiar estado del producto en el carrito
         $.ajax({
@@ -74,12 +75,14 @@ $(document).ready(function(){
                     actualuzarCalculos();
                 }
                 else
-                    GenerarMensaje(3,'La existencia de los productos es insuficiente, favor de verificar.');
+                    GenerarMensaje(3,'No se pudo eliminar el producto del carrito.');
             },
             error: function (data) {
                 console.log(JSON.stringify(data));
             }
         });
+
+        actualuzarCalculos();
     });
 });
 

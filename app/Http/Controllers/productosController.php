@@ -124,7 +124,7 @@ class productosController extends Controller
             //restar existencia
             foreach($lstArt as $art)
             {
-                DB::update("update productos set inventario = inventario - " . $art['cantidad'] . " where idproducto = " . (int)$art['id'] . ";");
+                DB::update("update productos set inventario = inventario - " . $art['cantidad'] . " where idproducto = " . (int)$art['idproducto'] . ";");
             }
 
             return true;

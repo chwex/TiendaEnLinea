@@ -6,3 +6,11 @@
     margin-bottom: 30px;
 }
 
+.alert-success, .alert-danger {
+    display:inline-block;
+    position:absolute;
+    width:400px;
+    top:12%;
+    right:2%;
+    z-index:1000;
+}

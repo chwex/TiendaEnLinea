@@ -65,7 +65,11 @@ class ventasController extends Controller
     }
 
     public function obtenerVentas(){
-
+        $ventas= DB::select("SELECT v.*, u.name as nombrecompleto
+                     FROM ventas v
+                     INNER JOIN users u ON u.id = v.idusuario
+                     ORDER BY v.folioventa DESC");
+    	return view ('mostrarVentas', compact('ventas'));
     }
 
     public function obtenerVentasUsuario(){

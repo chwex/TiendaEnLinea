@@ -60,7 +60,7 @@
 							<div class="form-group">
 								<label for="cantidad"></label>
 								<div class="input-group">
-									<a href="#" class="btn btn-danger" id="btnRemover">
+									<a href="#" class="btn btn-danger btnRemover" >
 	        							<span class="glyphicon glyphicon-remove"></span> Remover
 	      							</a>	
 								</div>	
