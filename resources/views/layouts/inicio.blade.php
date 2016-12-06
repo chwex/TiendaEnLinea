@@ -68,9 +68,17 @@
             <li><a href="{{ url('/login') }}">Iniciar sesion</a></li>
             <li><a href="{{ url('/register') }}">Registrar</a></li>
         @else
+        @if(Auth::user()->admin == 0)
+           <li>
+              <a href="{{url('/micarrito')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a>
+           </li>
+        @endif
         @if(Auth::user()->admin == 1)
             <li>
                 <a href="{{url('/admin')}}">Panel de Administración</a>
+            </li>
+            <li>
+              <a href="{{url('/micarrito')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a>
             </li>
         @endif
         <li class="dropdown">
@@ -94,7 +102,7 @@
             </ul>
         </li>
         @endif
-        <li><a href="{{url('/micarrito')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a></li>
+     
       </ul>
       
     </div>
