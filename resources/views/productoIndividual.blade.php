@@ -7,8 +7,6 @@
   		<div class="col-md-12">
        		<h3>Detallado de Producto</h3>
     	</div>
-  	</div>
-  	<div class="row">
     	<div class="col-md-8 col-xs-10">
     		<div class="panel panel-default">
      			@foreach($productos as $p)
@@ -21,14 +19,15 @@
 							<h2>{{$p -> nombreproducto}}</h2>
 							
 							<p><strong>Categoria: </strong> {{$p -> nombrecategoria }} </p>
-						
-							<p><strong>Calificacion: </strong>
-								<span class="label label-info tags">Mala</span> 
-								<span class="label label-info tags">Regular</span>
-								<span class="label label-info tags">Buena</span>
-								<span class="label label-info tags">Excelente</span>
-							</p>
 							<p><strong>Existencia: </strong> {{$p -> inventario}} </p>
+							<p><strong>Calificacion: </strong>
+								@for($i=0; $i<$p->promedio;$i++)
+									<span class="glyphicon glyphicon-star"></span>
+								@endfor
+								@for($i=$p->promedio; $i<5;$i++)
+									<span class="glyphicon glyphicon-star-empty"></span>
+								@endfor
+							</p>
 						</div>        
 					</div> 
 					<div class="col-xs-12 col-sm-4">
@@ -66,7 +65,7 @@
               						<label for="mensaje">Comentarios:</label>
               						<textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escribir comentario..."></textarea>
 									<div class="error" id="err-message" style="display: none;"></div>
-									<div class="col-md-5">
+									
 									<div class="form-group">
 									<label>Calificar producto:</label>
 										<select class="form-control" name="calificacion">
@@ -77,12 +76,13 @@
 										<option value="5">Cinco</option>
 										</select>
 									</div>
-            					</div> 
+            					
             					<div class="row">            
               						<div class="col-xs-12">
                 						<button type="submit" class="btn btn-primary btn-shadow btn-rounded w-md" id="send">Enviar</button>
               						</div> 
             					</div> <!-- /row -->
+            					</div>
 								@endif
 
           					</form> <!-- /form -->
@@ -92,7 +92,6 @@
 				</div>
 			</div>
 		</div>
-    </div>
+	</div>
 </div>
- 
 @stop
