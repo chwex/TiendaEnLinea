@@ -100,7 +100,10 @@
     </div>
   </div>
 </nav>
-
+<div class="alerta" id="mensajeAlerta">
+    <strong> </strong>
+    <label> </label>
+</div>
   <div class="container">
   </br></br>
       @yield('contenido')
