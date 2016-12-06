@@ -63,3 +63,4 @@ Route::post('/removerProductoCarrito', 'carritousuarioController@removerProducto
 Route::post('/guardarComentario','comentariosController@guardar');
 Route::get('/micarrito','carritousuarioController@obtenerCarrito');
 Route::get('/agregarCarrito/{idproducto}', 'carritousuarioController@agregarCarrito');
+Route::get('/mostrarVentas','ventasController@obtenerVentas');
