@@ -53,7 +53,7 @@ $(document).ready(function(){
        }
     });
 
-    $('#btnRemover').on('click', function(){ 
+    $('.btnRemover').on('click', function(){ 
         // obtner el id del producto desde el html
         var idrmv = $(this).closest('.row').children('.idrow').html();
 
@@ -62,6 +62,7 @@ $(document).ready(function(){
 
         //remover el producto del objeto prodAgregados
         prodAgregados = $.grep(prodAgregados, function(e) { return e.id != idrmv });
+        actualuzarCalculos();
 
         //cambiar estado del producto en el carrito
         $.ajax({

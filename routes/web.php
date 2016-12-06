@@ -34,8 +34,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('image-upload','ImageController@imageUpload');
     Route::post('image-upload','ImageController@imageUploadPost');
     Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
-   
-    Route::get('/agregarCarrito/{idproducto}', 'carritousuarioController@agregarCarrito');
+
     //Route::get('/');
     Route::post('/guardarVoto','comentariosController@guardar');
     //Rutas carrito
@@ -63,3 +62,4 @@ Route::post('/generarVenta', 'ventasController@generarVenta');
 Route::post('/removerProductoCarrito', 'carritousuarioController@removerProducto');
 Route::post('/guardarComentario','comentariosController@guardar');
 Route::get('/micarrito','carritousuarioController@obtenerCarrito');
+Route::get('/agregarCarrito/{idproducto}', 'carritousuarioController@agregarCarrito');
