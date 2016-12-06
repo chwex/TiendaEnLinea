@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\comentarios;
 use App\calificaciones;
+use App\usuario;
+use App\User;
 use App\Http\Requests;
 use Session;
 use Redirect;
@@ -79,19 +81,16 @@ class productosController extends Controller
         DB::select('call sp_visitaproducto(?,?)',array($idu,$idp));
         
         $categorias=DB::select("SELECT * FROM categorias");
-        $productos=DB::select("SELECT *, c.nombrecategoria FROM productos p INNER JOIN categorias c on p.categoriaid = c.idcategoria WHERE idproducto = " . $idp);    
+        $productos=DB::select("SELECT *, c.nombrecategoria, (SELECT AVG(valor) FROM calificaciones where idproducto = " .$idp.") as promedio FROM productos p INNER JOIN categorias c on p.categoriaid = c.idcategoria WHERE idproducto = " . $idp);    
         $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$idp);
+
+        #$calificaciones=DB::select("SELECT * , AVG(valor) as promedio FROM calificaciones ");
+
+       # $promedio=DB::select("SELECT AVG(valor) FROM calificaciones where idproducto = " .$idp);
 
         return view('/productoIndividual', compact('productos','categorias','comentarios'));
     }
 
-    public function voto($id){
-      $categorias=DB::select("SELECT * FROM categorias WHERE idcategoria = " . $id);
-      $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $id);    
-      $calificaciones=DB::select("SELECT * FROM calificaciones c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$id);
-
-        return view('/productoIndividual', compact('productos','categorias','calificaciones'));
-    }
 
     public function validarExistencia($lstArt){
         //obtener todos los ids de los articulos de la venta

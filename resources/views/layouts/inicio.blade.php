@@ -47,7 +47,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-left" href="#">
-        <img width="60%" src="{{ asset("/Imagenes/minilogo.png") }}" alt="Image">
+           <a href="{{url('/')}}"><img src="{{ asset("/Imagenes/minilogo.png") }}" width="60%" class="img-circle" alt="User Image"></a> 
+
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -64,8 +65,8 @@
       <ul class="nav navbar-nav navbar-right">
          <!-- Authentication Links -->
         @if (Auth::guest())
-            <li><a href="{{ url('/login') }}">Login</a></li>
-            <li><a href="{{ url('/register') }}">Register</a></li>
+            <li><a href="{{ url('/login') }}">Iniciar sesion</a></li>
+            <li><a href="{{ url('/register') }}">Registrar</a></li>
         @else
         @if(Auth::user()->admin == 1)
             <li>
@@ -82,7 +83,7 @@
                     <a href="{{ url('/logout') }}"
                         onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                        Logout
+                        Cerrar sesion
                     </a>
 
                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -93,7 +94,7 @@
             </ul>
         </li>
         @endif
-        <li><a href="{{url('/micarrito')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <li><a href="{{url('/micarrito')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a></li>
       </ul>
       
     </div>

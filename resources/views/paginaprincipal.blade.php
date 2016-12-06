@@ -15,42 +15,42 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car1.jpg") }}" alt="Image" style="width: 150px; height: 150px;">
+      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car1.jpg") }}" alt="Image" style="width: 300px; height: 300px;">
       <div class="carousel-caption">
         <h3>Carreras</h3>
         <p></p>
       </div>
     </div>
     <div class="item">
-      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car2.jpg") }}" alt="Image" style="width: 150px; height: 150px;">
+      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car2.jpg") }}" alt="Image" style="width: 300px; height: 300px;">
       <div class="carousel-caption">
         <h3>FarCry</h3>
         <p></p>
       </div>
     </div>
     <div class="item">
-      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car3.jpg") }}" alt="Image" style="width: 150px; height: 150px;">
+      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car3.jpg") }}" alt="Image" style="width: 300px; height: 300px;">
       <div class="carousel-caption">
         <h3>Nintendo</h3>
         <p></p>
       </div>
     </div>
     <div class="item">
-      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car4.jpg") }}" alt="Image" style="width: 150px; height: 150px;">
+      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car4.jpg") }}" alt="Image" style="width: 300px; height: 300px;">
       <div class="carousel-caption">
         <h3>Surgeon Simulator</h3>
         <p></p>
       </div>
     </div>
     <div class="item">
-      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car5.jpg") }}" alt="Image" style="width: 150px; height: 150px;">
+      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car5.jpg") }}" alt="Image" style="width: 300px; height: 300px;">
       <div class="carousel-caption">
         <h3>Social Media</h3>
         <p></p>
       </div>
     </div>
     <div class="item">
-      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car6.jpg") }}" alt="Image" style="width: 150px; height: 150px;">
+      <img class="img-responsive center-block" src="{{ asset("/Imagenes/car6.jpg") }}" alt="Image" style="width: 300px; height: 300px;">
       <div class="carousel-caption">
         <h3>League of Legends</h3>
         <p></p>
