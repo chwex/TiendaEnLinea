@@ -65,12 +65,12 @@
       <ul class="nav navbar-nav navbar-right">
          <!-- Authentication Links -->
         @if (Auth::guest())
-            <li><a href="{{ url('/login') }}">Iniciar sesion</a></li>
-            <li><a href="{{ url('/register') }}">Registrar</a></li>
+            <li><a href="{{ url('/login') }}">Iniciar sesión</a></li>
+            <li><a href="{{ url('/register') }}">Registro</a></li>
         @else
         @if(Auth::user()->admin == 1)
             <li>
-                <a href="{{url('/admin')}}">Panel de Administración</a>
+                <a href="{{url('/admin')}}">Panel de administración</a>
             </li>
         @endif
         <li class="dropdown">
