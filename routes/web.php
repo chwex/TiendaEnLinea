@@ -39,7 +39,7 @@ Route::group(['middleware' => ['admin']], function(){
     //Route::get('/');
     Route::post('/guardarVoto','comentariosController@guardar');
     //Rutas carrito
-    Route::get('micarrito','carritousuarioController@obtenerCarrito');
+ 
 });
 
 //Rutas registro
@@ -62,4 +62,4 @@ Route::get('/productos/{id}','productosController@productos');
 Route::post('/generarVenta', 'ventasController@generarVenta');
 Route::post('/removerProductoCarrito', 'carritousuarioController@removerProducto');
 Route::post('/guardarComentario','comentariosController@guardar');
-
+Route::get('/micarrito','carritousuarioController@obtenerCarrito');

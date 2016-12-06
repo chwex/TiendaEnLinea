@@ -10,7 +10,7 @@ use App\comentarios;			#Añadi la tabla
 use App\calificaciones;
 use DB;
 use App\Http\Requests;
-use App\http\Controllers\Controller; 
+use App\Http\Controllers\Controller; 
 use Session;
 use Redirect;
 
