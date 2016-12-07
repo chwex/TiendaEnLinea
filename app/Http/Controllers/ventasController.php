@@ -117,9 +117,7 @@ class ventasController extends Controller
             return view ('mostrarVentaUsuario', compact('prodventa', 'venta', 'categorias'));
         }
 
-<<<<<<< HEAD
-=======
-    }
+    
 
     public function ventaPDF($idv)
     {         
@@ -141,5 +139,5 @@ class ventasController extends Controller
     
 
 
->>>>>>> david
+
 }
