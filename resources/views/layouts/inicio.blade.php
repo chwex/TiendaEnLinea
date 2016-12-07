@@ -27,17 +27,13 @@
   </style>
 </head>
 <body>
-
 <!--<div class="jumbotron" style="background-image:url('{{ asset("/Imagenes/banner.png") }}'); background-size: 100% auto; padding-bottom: 9%;">
 </div>-->
-
-
 <div class="container-fluid">
   <div class="row">
-	 <a href="{{url('/')}}"><img src="{{ asset("/Imagenes/banner.png") }}" class="img-responsive"></a> 
+   <a href="{{url('/')}}"><img src="{{ asset("/Imagenes/banner.png") }}" class="img-responsive"></a> 
   </div>
 </div>
-
 <nav id="mainNav" class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -48,7 +44,6 @@
       </button>
       <a class="navbar-left" href="#">
            <a href="{{url('/')}}"><img src="{{ asset("/Imagenes/minilogo.png") }}" width="60%" class="img-circle" alt="User Image"></a> 
-
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -85,7 +80,6 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 {{ Auth::user()->name }} <span class="caret"></span>
             </a>
-
             <ul class="dropdown-menu" role="menu">
                 <li>
                    <a href="{{ url('/mostrarVentasUsuario') }}">Historial de Compras</a> 
@@ -96,7 +90,6 @@
                                     document.getElementById('logout-form').submit();">
                         Cerrar sesion
                     </a>
-
                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
@@ -130,14 +123,10 @@
         </div>
 </div>
 </footer>
-
     <script src="{{ asset("/adminlte/plugins/jQuery/jquery-2.2.3.min.js") }}"></script>
     <script src="{{ asset("/adminlte/bootstrap/js/bootstrap.min.js") }}"></script>
     <script src="{{ asset("/js/inicio.js") }}"></script>
-
     @yield('scripts')
-
-
     @if(session()->has('mensaje'))
     <script>GenerarMensaje({{ Session::get('nivel') }},'{{ Session::get('mensaje') }}')</script>
     @endif

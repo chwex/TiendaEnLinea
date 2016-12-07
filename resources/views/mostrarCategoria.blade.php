@@ -1,12 +1,7 @@
 @extends('layouts.admindash')
 
 @section('encabezadocontenido')
-	<h1> <center>
-		Categorias
-		</br>
-		<small>Seleccione categoria para ver sus productos.</small>
-		 </center>
-	</h1>
+<a href="{{url('/registrarCategoria')}}"> <input  value="Registrar categoria" class="btn btn-primary" name="registrar"></a>
 @stop
 
 @section('contenido')
@@ -37,11 +32,9 @@
 
     <div class="row text-center" style="margin-bottom: 20px;">
     @foreach($categorias as $c)
-        <a href="{{url('/productos')}}/{{$c->idcategoria}}" type="button" class="btn btn-circle" style="font-size: 100%; background-color: rgb(38, 128, 184);">{{$c->nombrecategoria}}</a>
+        <a href="{{url('/mostrarep')}}/{{$c->idcategoria}}" type="button" class="btn btn-circle" style="font-size: 100%; background-color: rgb(38, 128, 184);">{{$c->nombrecategoria}}</a>
         @endforeach
     </div>
- <a href="{{url('/registrarCategoria')}}"> <input  value="Registrar categoria" class="btn btn-primary" name="registrar"></a>
-               
 </div>
 
 

@@ -1,6 +1,8 @@
 @extends('layouts.inicio')
 
 @section('contenido')
+
+
     <div id="mainCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">

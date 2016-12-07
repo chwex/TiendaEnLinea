@@ -2,7 +2,7 @@
 
 @section('encabezadocontenido')
 
-		<small>Descripcion Opcional</small>
+
 
 @stop
 
