@@ -35,6 +35,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('image-upload','ImageController@imageUploadPost');
     Route::get('/mostrarCategoria', 'categoriasController@mostrarCategoria');
     Route::get('/mostrarVentas','ventasController@obtenerVentas');
+    Route::get('/mostrarVenta/{idventa}', 'ventasController@mostrarVenta');
     //Route::get('/');
     Route::post('/guardarVoto','comentariosController@guardar');
     //Rutas carrito
