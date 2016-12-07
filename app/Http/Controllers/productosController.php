@@ -24,7 +24,13 @@ class productosController extends Controller
     public function inicio()
     {
         $categorias=categorias::all();
-        $productosPop = DB::select("SELECT * FROM productos LIMIT 6");
+        $productosPop = DB::select("SELECT p.idproducto, p.imagen, p.nombreproducto, SUM(pv.cantidad) AS TotalQuantity
+FROM productosventas pv
+INNER JOIN productos p on pv.idproducto = p.idproducto
+GROUP BY p.idproducto, p.imagen, p.nombreproducto
+ORDER BY SUM(pv.cantidad) DESC
+LIMIT 6");
+
         return view('paginaprincipal', compact('categorias','productosPop'));
     }
     //Funcion que obtenga los 6 juegos mejor vendidos para mostrar en la pagina de inicio
@@ -86,7 +92,7 @@ class productosController extends Controller
         
         $categorias=DB::select("SELECT * FROM categorias");
         $productos=DB::select("SELECT *, c.nombrecategoria, (SELECT AVG(valor) FROM calificaciones where idproducto = " .$idp.") as promedio FROM productos p INNER JOIN categorias c on p.categoriaid = c.idcategoria WHERE idproducto = " . $idp);    
-        $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$idp);
+        $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE c.estado <> 0 AND p.idproducto = " .$idp);
 
         #$calificaciones=DB::select("SELECT * , AVG(valor) as promedio FROM calificaciones ");
 
@@ -111,7 +117,7 @@ class productosController extends Controller
         
         $categorias=DB::select("SELECT * FROM categorias");
         $productos=DB::select("SELECT *, c.nombrecategoria, (SELECT AVG(valor) FROM calificaciones where idproducto = " .$idp.") as promedio FROM productos p INNER JOIN categorias c on p.categoriaid = c.idcategoria WHERE idproducto = " . $idp);    
-        $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE  p.idproducto = " .$idp);
+        $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE c.estado <> 0 AND  p.idproducto = " .$idp);
 
         #$calificaciones=DB::select("SELECT * , AVG(valor) as promedio FROM calificaciones ");
 
