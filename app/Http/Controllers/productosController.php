@@ -96,6 +96,31 @@ class productosController extends Controller
     }
 
 
+
+     public  function productoDetalle($idp)
+    {
+        if ( \Auth::check()) {
+            $idu = \Auth::user()->id;
+        }   
+        else{
+            $idu = 9;
+        }
+
+        //registrar visita del usuario al producto en la bd
+        DB::select('call sp_visitaproducto(?,?)',array($idu,$idp));
+        
+        $categorias=DB::select("SELECT * FROM categorias");
+        $productos=DB::select("SELECT *, c.nombrecategoria, (SELECT AVG(valor) FROM calificaciones where idproducto = " .$idp.") as promedio FROM productos p INNER JOIN categorias c on p.categoriaid = c.idcategoria WHERE idproducto = " . $idp);    
+        $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$idp);
+
+        #$calificaciones=DB::select("SELECT * , AVG(valor) as promedio FROM calificaciones ");
+
+       # $promedio=DB::select("SELECT AVG(valor) FROM calificaciones where idproducto = " .$idp);
+
+        return view('/mostrarDetalle', compact('productos','categorias','comentarios'));
+    }
+
+
     public function validarExistencia($lstArt){
         //obtener todos los ids de los articulos de la venta
         $idArts = array_column($lstArt, 'idproducto');

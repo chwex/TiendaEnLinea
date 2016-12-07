@@ -20,7 +20,6 @@
                             <strong><a href="{{url('/productos')}}/{{$p->idproducto}}">{{$p->nombreproducto}}</a></strong>
                         </h4>
                         <hr>
-                        <p>{{$p->descripcion}}</p>
                         <p>
                             <a href="#" class="btn btn-default" disabled="" data-original-title="" title="">${{$p->precio}}</a>
                         </p>

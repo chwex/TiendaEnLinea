@@ -1,7 +1,10 @@
 @extends('layouts.admindash')
 
 @section('encabezadocontenido')
-	<h3> Productos: </h3>
+	<h3> Productos: </h3> 
+    <div class="">
+        <a href="{{url('/registrarProducto')}}"> <input  value="Registrar el producto" class="btn btn-primary" name="registrar"></a>
+    </div>
 @stop
 
 @section('contenido')
@@ -124,25 +127,20 @@
                         <div class="col-sm-3">
                             <div class="col-item">
                                 <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                    <img style="width: 100px; height: 100px;" src="{{ asset("/Imagenes/Productos/$p->imagen")}}" alt="" class="center-block img-circle img-responsive" >
                                 </div>
                                 <div class="info">
                                     <div class="row">
-                                        <div class="price col-md-6">
+                                        <div class="price col-md-12">
                                             <h5>{{$p->nombreproducto}}</h5>
                                             <h5 class="price-text-color">${{$p->precio}}</h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="fa fa-star"></i>
-                                        </div>
+                                        </div>       
                                     </div>
                                     <div class="separator clear-left">
                                         <p class="btn-add">
                                             <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Editar Producto</a></p>
                                         <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Más Detalles</a></p>
+                                            <i class="fa fa-list"></i><a href="{{url('/productos')}}/{{$p->idproducto}}" class="hidden-sm">Más Detalles</a></p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>                  
@@ -150,7 +148,7 @@
                         </div>
                         @endforeach   
                     </div>
-                 <a href="{{url('/registrarProducto')}}"> <input  value="Registrar el producto" class="btn btn-primary" name="registrar"></a>
+                 
                 </div>
             </div>
         </div>

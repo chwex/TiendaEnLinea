@@ -1,4 +1,4 @@
-@extends('layouts.inicio')
+@extends('layouts.admindash')
 
 
 @section('contenido')
@@ -142,61 +142,29 @@
 					</div> 
 					<div class="col-xs-12 col-sm-4">
 						<h2><strong>${{$p->precio}} </strong></h2>
-
-						@if(!Auth::guest())                    
-							<form action="{{ url('/agregarCarrito')}}/{{$p->idproducto}}">
-								<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Agregar a carrito </button>
-							</form>
-						@endif
 					</div>
 
 					 <!-- Contact form -->
 					<div class="panel-body">
         				<div class="col-xs-12">
-          					<form role="form" name="ajax-form" id="ajax-form" action="{{url('/guardarComentario')}}" method="POST" class="form-main">
-          					<input type="hidden" name="_token" value="{{csrf_token() }}">
-            					<div class="form-group">
-            					</br><hr style="color: #0056b2;" /></br>
-            					<div>
-									<h3>Comentarios del producto:</h3>
-									@foreach($comentarios as $c)
-										<label>{{$c->name}} comento:</label>
-										<p>{{$c-> mensaje}}</p>
-									@endforeach
-									</div>
-
-              						</br>
-              							<input style="display: none;" class="form-control" id="idproducto" name="idproducto" type="text" onfocus="if(this.value == '{{$p->idproducto}}') this.value='';" onblur="if(this.value == '') this.value='{{$p->idproducto}}';" value="{{$p->idproducto}}">
-              							<div class="error" id="err-emailvld" style="display: none;">E-mail is not a valid format</div> 
-            					</div> <!-- /Form-email -->
-
-								@if(!Auth::guest()) 
-            					<div class="form-group">
-              						<label for="mensaje">Comentarios:</label>
-              						<textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escribir comentario..."></textarea>
-									<div class="error" id="err-message" style="display: none;"></div>
-									
-									<div class="form-group">
-									<label>Calificar producto:</label>
-										<select class="form-control" name="calificacion">
-										<option value="1">Uno</option>
-										<option value="2">Dos</option>
-										<option value="3">Tres</option>
-										<option value="4">Cuatro</option>
-										<option value="5">Cinco</option>
-										</select>
-									</div>
-            					
-            					<div class="row">            
-              						<div class="col-xs-12">
-                						<button type="submit" class="btn btn-primary btn-shadow btn-rounded w-md" id="send">Enviar</button>
-              						</div> 
-            					</div> <!-- /row -->
-            					</div>
-								@endif
-
-          					</form> <!-- /form -->
-        				</div> <!-- end col -->
+                            <table class="table table-hover">
+                                <thead>
+                                   <tr>
+                                        <th>Nombre</th>
+                                        <th>Comentario</th>
+                                    </tr> 
+                                </thead>
+                                <tbody>
+                                    @foreach($comentarios as $c)
+                                        <tr>
+                                            <td>{{$c->name}}</td>
+                                            <td>{{$c->mensaje}}</td>
+                                            <td><a href="" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove" aria-hidden="true">Eliminar</span></a></td>
+                                        </tr>
+                                    @endforeach                                
+                                </tbody> 
+                            </table>                
+        			    </div> 
         			</div>
 				@endforeach     
 				</div>
@@ -205,3 +173,5 @@
 	</div>
 </div>
 @stop
+
+
