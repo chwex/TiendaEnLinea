@@ -4,6 +4,7 @@
 @foreach($venta as $v)
 	<h1> <center>
 		Detalle de Venta con Folio: {{$venta[0]->folioventa}}
+		<a href="{{url('/ventaPDF')}}/{{$venta[0]->id}}"  class="btn btn-success" role="button">PDF</a>
 		</br>
 		Fecha de Venta : {{ Carbon\Carbon::parse($venta[0]->fecha)->format('d-m-Y') }}
 		 </center>

@@ -64,7 +64,12 @@ Route::post('/removerProductoCarrito', 'carritousuarioController@removerProducto
 Route::post('/guardarComentario','comentariosController@guardar');
 Route::get('/micarrito','carritousuarioController@obtenerCarrito');
 Route::get('/agregarCarrito/{idproducto}', 'carritousuarioController@agregarCarrito');
+
 Route::get('/mostrarVentasUsuario','ventasController@obtenerVentasUsuario');
 Route::get('/mostrarVentaUsuario/{idventa}', 'ventasController@mostrarVentaUsuario');
 Route::get('/mostrarDetalle/{id}','productosController@productoDetalle');
 Route::get('/eliminarComentario/{id}', 'comentariosController@eliminarComentario');
+
+
+Route::get('/ventaPDF/{idv}','ventasController@ventaPDF');
+

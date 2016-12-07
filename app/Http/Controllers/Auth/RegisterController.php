@@ -76,8 +76,6 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-           Mail::to($user->email)->send(new Kryptonitefound($user));
-
-        return $user;
+         r;
     }
 }
