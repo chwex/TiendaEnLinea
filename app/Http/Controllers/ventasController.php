@@ -81,7 +81,7 @@ class ventasController extends Controller
                         inner join productos p on pv.idproducto = p.idproducto
                         where v.id = " . $idv);
         
-        $venta = DB::select("select v.total, v.folioventa, v.fecha, u.name
+        $venta = DB::select("select v.id, v.total, v.folioventa, v.fecha, u.name
                              from ventas v
                              inner join users u on v.idusuario = u.id
                              where v.id = " . $idv);
@@ -100,7 +100,7 @@ class ventasController extends Controller
                         inner join productosventas pv on v.id = pv.idventa
                         inner join productos p on pv.idproducto = p.idproducto
                         where v.id = " . $idv);        
-             $venta = DB::select("select v.total, v.folioventa, v.fecha, u.name
+             $venta = DB::select("select v.id, v.total, v.folioventa, v.fecha, u.name
                              from ventas v
                              inner join users u on v.idusuario = u.id
                              where v.id = " . $idv);             

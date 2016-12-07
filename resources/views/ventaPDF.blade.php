@@ -4,46 +4,29 @@
 	<title>COMPROBANTE DE LA VENTA</title>
 </head>
 <body>
+    
+        <center>
+            <h2>COMPROBANTE DE VENTA  CON   FOLIO: {{$venta[0]->folioventa}} </h2> 
+            <h3>CLIENTE: {{$venta[0]->name}}</h3>
+            <h3>__________________________________________________________________________________</h3>   
+        </center>
+        @foreach($prodventa as $pv)
+                    <br>
+                    <h3>CARACTERISTICAS DEL PRODUCTO</h3>
+                    <p>NOMBRE PRODUCTO: {{$pv->nombreproducto}}</p>
+                    <p>PRECIO PRODUCTO: {{$pv->precio}}</p>
+                    <p>CANTIDAD PRODUCTO: {{$pv->cantidad}}</p>
+        <center> 
+        </center>    
+                    <img src="{{ asset("/Imagenes/Productos/$pv->imagen")}}" style="height:350px; weight:350px;" class="img-responsive" alt="no encontrada">
+        <center>            
+             <h3>__________________________________________________________________________________</h3> 
+        </center>    
+                    <h3>INFORMACION DE LA VENTA</h3>    
+                    <p>TOTAL VENTA: {{$venta[0]->total}}</p>
+                    <p>FOLIO: {{$venta[0]->folioventa}}</p>
 
-@foreach($prodventa as $pv)
-
-<center>
-
-<div class="row">
-  <div class="col-md-4">
-  
-        <div class="thumbnail">
-
-
-
-            <h2>CARACTERISTICAS DEL PRODUCTO</h2>
-            <br>
-            <h2>CLIENTE::: {{$pv->name}}</h2>
-            </br>
-            <h4>NOMBRE PRODUCTO:::   {{$pv->nombreproducto}}</h4>
-            <h4>PRECIO PRODUCTO:::   {{$pv->precio}}</h4>
-            <h4>CANTIDAD PRODUCTO::: {{$pv->cantidad}}</h4>
-            <img src="{{ asset("/Imagenes/Productos/$pv->imagen")}}" class="img-responsive" alt="no encontrada">
-
-            <div class="caption">
-            <h2>INFORMACION DE LA VENTA</h2>
-            <p>TOTAL VENTA::: {{$pv->total}}</p>
-            <p>FOLIO::: {{$pv->folioventa}}</p>
-
-                                <!--<p align="center">
-                                    <a href="{{url('/pdfPokemon')}}/{{$p->id}}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-file">PDF</span></a> 
-                                    <a href="{{url('/darPoder')}}/{{$p->id}}" class="btn btn-danger" role="button">Poder <span class="badge">{{$p->caramelos}} 
-                                    <img src="{{asset ("images/caramelo.png")}}" height="15"> </span> </a>
-                                </p>-->
-                                
-                    </div>
-        </div>
-    </div>
-</div>
-
-</center>
-
-@endforeach
-
+                    <div class="caption">
+        @endforeach
 </body>
 </html>
