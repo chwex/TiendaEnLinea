@@ -4,7 +4,7 @@
 @foreach($venta as $v)
 	<h1> <center>
 		Detalle de Venta con Folio: {{$venta[0]->folioventa}}
-		<a href="{{url('/ventaPDF')}}/{{$venta[0]->id}}"  class="btn btn-success" role="button">PDF</a>
+		
 		</br>
 		Fecha de Venta : {{ Carbon\Carbon::parse($venta[0]->fecha)->format('d-m-Y') }}
 		 </center>
@@ -41,7 +41,7 @@
 								<div class="input-group">
 									<span class="input-group-addon">$</span>
 									<input type="text" class="form-control" name="precio" id="precio" value="{{$pv->precio}}" disabled>
-								</div>	
+							</div>	
 							</div>
 						</div>
 	  				</div>
@@ -55,6 +55,22 @@
 							</div>
 						</div>
 	  				</div>
+					<div class="col-md-2">
+	 	  				<div class="col-xs-14">
+							<div class="form-group">
+								<label for="cantidad">PDF</label>
+								<div class="input-group">
+									
+									 <a href="{{url('/ventaPDF')}}/{{$venta[0]->id}}"  class="btn btn-success" role="button">Generar PDF</a>
+								</div>	
+							</div>
+						</div>
+	  				</div>
+
+
+
+
+
 	  			</div>
 			</div>
 		</div>
