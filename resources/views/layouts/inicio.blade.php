@@ -24,6 +24,174 @@
       background-color: #f2f2f2;
       padding: 25px;
     }
+
+
+
+
+.testimonials-v-2 {
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.testi-slide {
+  text-align: center;
+}
+
+.testi-slide img {
+  width: 92px;
+  height: 92px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.testi-slide p {
+  margin: 20px 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  font-style: italic;
+}
+
+.testi-slide i {
+  color: #32c5d2;
+  margin-right: 10px;
+}
+
+.testi-slide h4 {
+  font-weight: 400;
+  font-size: 16px;
+  font-family: "Lato", sans-serif !important;
+  font-style: italic;
+}
+
+.testi-slide .flex-control-paging li a {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  box-shadow: none;
+  background: transparent !important;
+  border: 2px solid #ccc;
+  width: 8px;
+  height: 8px;
+}
+
+.testi-slide .flex-control-paging li a.flex-active {
+  background: transparent !important;
+  border: 2px solid #32c5d2;
+}
+
+.quote {
+  position: relative;
+}
+
+.quote blockquote {
+  padding: 0px;
+  border: 0;
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.quote blockquote p {
+  color: #fff;
+  padding-top: 25px;
+  padding-bottom: 45px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.quote blockquote:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 90px;
+  width: 0;
+  height: 0;
+  border-top: 0.83333em solid #ccc;
+  border-right: 0.86667em solid transparent;
+}
+
+.quote.green blockquote {
+  background-color: #32c5d2;
+}
+
+.quote.green blockquote:before {
+  border-top-color: #32c5d2;
+}
+
+.quote.dark blockquote {
+  background-color: #555;
+}
+
+.quote.dark blockquote:before {
+  border-top-color: #555;
+}
+
+.quote-footer {
+  margin: 10px 0;
+}
+
+.quote-footer .quote-author-img img {
+  float: left;
+  max-width: 90px;
+  width: 90px;
+  height: 90px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  margin-left: -5px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 1;
+  padding: 5px;
+  background-color: #fff;
+}
+
+.quote-footer h4 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.quote-footer p {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 14px;
+}
+
+
+
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 280px;
+  background: 
+  /* color overlay */ 
+    linear-gradient(
+      rgba(240, 212, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ),
+    /* image to overlay */
+    url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);
+}
+
+
+/* Custom footer CSS
+-------------------------------------------------- */
+
+.footertext {
+  color: black;
+}
+
   </style>
 </head>
 <body>
@@ -43,7 +211,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-left" href="#">
-           <a href="{{url('/')}}"><img src="{{ asset("/Imagenes/minilogo.png") }}" width="60%" class="img-circle" alt="User Image"></a> 
+           <a href="{{url('/')}}"><img src="{{ asset("/Imagenes/minilogo.png") }}" style="width:50px;" class="img-responsive" alt="User Image"></a> 
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -112,14 +280,126 @@
       @yield('contenido')
       </br></br>
   </div>
-<footer class="container-fluid text-center">
-  <p>Games Bond Copyright</p>
-  <div class="container">
-    
-    <div class="row">
-            <div class="col-xs-4">
-                <p class="text-muted pull-right">© 2016 Company Name. All rights reserved</p>
+
+<div class="container">
+<div class="row">
+    <div class="col-md-4 margin-btm-20">
+        <div class="quote dark">
+            <blockquote>
+                <p>
+                    Desarrollando siempre con entuciasmo y dedicacion, a lo que me genera pasion.                         
+                </p>
+            </blockquote>                        
+        </div>
+        <div class="quote-footer text-right">
+            <div class="quote-author-img">
+                <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
             </div>
+            <h4>Carlos Valdez</h4>
+            <p>
+                <strong>Desarrollador</strong>
+            </p>
+        </div>
+    </div><!--colored quote box col-->
+    <div class="col-md-4 margin-btm-20">
+        <div class="quote green">
+            <blockquote>
+                <p>
+                    Diseñando y desarrollando la pagina que el cliente eligio.                         
+                </p>
+            </blockquote>                        
+        </div>
+        <div class="quote-footer text-right">
+            <div class="quote-author-img">
+                <img src="http://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+            </div>
+            <h4>David Hernandez</h4>
+            <p>
+                <strong>Desarrollador</strong>
+            </p>
+        </div>
+    </div><!--colored quote box col-->
+    <div class="col-md-4 margin-btm-20">
+        <div class="quote dark">
+            <blockquote>
+                <p>
+                    Desarrollando con dedicacion para mostrar al cliente un mundo inteligente.                          
+                </p>
+            </blockquote>                        
+        </div>
+        <div class="quote-footer text-right">
+            <div class="quote-author-img">
+                <img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+            </div>
+            <h4>Marcos Orozco</h4>
+            <p>
+                <strong>Desarrollador</strong>
+            </p>
+        </div>
+    </div><!--colored quote box col-->
+</div><!--testimonials row-->
+</div>
+
+
+
+<div class="container">
+            <div class="row">
+                <div class="col-md-4 margin-btm-20">
+                    <div class="quote green">
+                        <blockquote>
+                            <p>
+                                Diseñando y desarrollando la web que vende los mejores video juegos de hoy.                          
+                            </p>
+                        </blockquote>                        
+                    </div>
+                    <div class="quote-footer text-right">
+                        <div class="quote-author-img">
+                            <img src="http://bootdey.com/img/Content/avatar/avatar4.png" alt="">
+                        </div>
+                        <h4>Moises Sanchez</h4>
+                        <p>
+                            <strong>Desarrollador</strong>
+                        </p>
+                    </div>
+                </div><!--colored quote box col-->
+                
+            </div><!--testimonials row-->
+            <br>
+        </div>
+<footer class="container-fluid text-center">
+  
+  <div class="container">
+  <div class="row">
+           
+            <br>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                  <br>
+                  <h4 class="footertext">Desarrollo</h4>
+                  <p class="footertext"><br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                  <br>
+                  <h4 class="footertext">Estilo</h4>
+                  <p class="footertext"><br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                  <br>
+                  <h4 class="footertext">Diseño</h4>
+                  <p class="footertext"></p><br>
+                </center>
+              </div>
+            </div>
+            <div class="row">
+            <center><p>Games Bond Copyright © 2016</p></center>
+            
         </div>
 </div>
 </footer>
