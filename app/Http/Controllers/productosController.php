@@ -111,7 +111,7 @@ class productosController extends Controller
         
         $categorias=DB::select("SELECT * FROM categorias");
         $productos=DB::select("SELECT *, c.nombrecategoria, (SELECT AVG(valor) FROM calificaciones where idproducto = " .$idp.") as promedio FROM productos p INNER JOIN categorias c on p.categoriaid = c.idcategoria WHERE idproducto = " . $idp);    
-        $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE p.idproducto = " .$idp);
+        $comentarios=DB::select("SELECT * FROM comentarios c INNER JOIN users u on c.idusuario = u.id INNER JOIN productos p on c.idproducto = p.idproducto WHERE  p.idproducto = " .$idp);
 
         #$calificaciones=DB::select("SELECT * , AVG(valor) as promedio FROM calificaciones ");
 

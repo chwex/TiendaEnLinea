@@ -71,13 +71,14 @@
 
 <div class="container">
   <div class="row">  
+
    <?php $pos = 1; ?>
    @foreach($productosPop as $pp)
     <div class="col-sm-4">
       <div class="panel panel-success">
-        <div class="panel-heading">Producto Destacado #{{$pos}}  </div>
+        <div class="panel-heading">Productos Destacado:   </div>
         <div class="panel-body"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><img src="{{ asset("/Imagenes/Productos/$pp->imagen") }}" class="img-responsive" style="width:100%" alt="Image"></a></div>
-        <div class="panel-footer"><a href="{{ url('/productos')}}/{{$pp->idproducto}}">{{$pp->nombreproducto}}</a></div>
+        <div class="panel-footer"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><center>{{$pp->nombreproducto}}</center></a></div>
       </div>
     </div>
     <?php $pos++; ?> 

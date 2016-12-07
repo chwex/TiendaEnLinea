@@ -53,5 +53,19 @@ class comentariosController extends Controller
     	return Redirect('/productos/'.$idproducto);
 
     } 
+    public function eliminarComentario($id)
+    {
+
+
+       $idp = DB::select("select p.idproducto from productos p inner join comentarios c on p.idproducto = c.idproducto where c.idcomentario = " . $id);
+
+            DB::update('update comentarios set estado = 0 where idcomentario = ' . $id);
+
+        \Session::flash('mensaje', 'Se elimino el comentario del producto.');
+        \Session::flash('nivel', '1');
+
+         return Redirect('/mostrarDetalle/'.$idp[0]->idproducto);
     
+
+    }
 }

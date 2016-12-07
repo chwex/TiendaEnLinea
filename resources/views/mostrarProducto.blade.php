@@ -140,7 +140,7 @@
                                         <p class="btn-add">
                                             <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Editar Producto</a></p>
                                         <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="{{url('/productos')}}/{{$p->idproducto}}" class="hidden-sm">Más Detalles</a></p>
+                                            <i class="fa fa-list"></i><a href="{{url('/mostrarDetalle')}}/{{$p->idproducto}}" class="hidden-sm">Más Detalles</a></p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>                  
