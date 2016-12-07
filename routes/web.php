@@ -65,6 +65,5 @@ Route::post('/guardarComentario','comentariosController@guardar');
 Route::get('/micarrito','carritousuarioController@obtenerCarrito');
 Route::get('/agregarCarrito/{idproducto}', 'carritousuarioController@agregarCarrito');
 Route::get('/mostrarVentasUsuario','ventasController@obtenerVentasUsuario');
-Route::get('/productos/{id}','productosController@productoDetalle');
 Route::get('/mostrarDetalle/{id}','productosController@productoDetalle');
 Route::get('/eliminarComentario/{id}', 'comentariosController@eliminarComentario');

@@ -1,11 +1,7 @@
 @extends('layouts.admindash')
 
 @section('encabezadocontenido')
-	<h1> 
-		Encabezado de la Pagina
-		<small>Descripcion Opcional</small>
 
-	</h1>
 @stop
 
 @section('contenido')

@@ -1,10 +1,8 @@
 @extends('layouts.admindash')
 
 @section('encabezadocontenido')
-	<h3> Productos: </h3> 
-    <div class="">
-        <a href="{{url('/registrarProducto')}}"> <input  value="Registrar el producto" class="btn btn-primary" name="registrar"></a>
-    </div>
+    <a href="{{url('/registrarProducto')}}"> <input  value="Registrar el producto" class="btn btn-primary" name="registrar"></a>
+
 @stop
 
 @section('contenido')
@@ -137,8 +135,7 @@
                                         </div>       
                                     </div>
                                     <div class="separator clear-left">
-                                        <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Editar Producto</a></p>
+                                        
                                         <p class="btn-details">
                                             <i class="fa fa-list"></i><a href="{{url('/mostrarDetalle')}}/{{$p->idproducto}}" class="hidden-sm">Más Detalles</a></p>
                                     </div>
