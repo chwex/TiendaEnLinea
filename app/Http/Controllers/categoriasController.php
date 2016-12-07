@@ -48,4 +48,21 @@ class categoriasController extends Controller
 
         return view('productoVisitante', compact('productos','categorias'));
     }
+    public function mostrarProdAdm($idc)
+    {
+        if ( \Auth::check()) {
+            $idu = \Auth::user()->id;
+        }   
+        else{
+            $idu = 9;
+        }
+        DB::select('call sp_visitacategoria(?,?)',array($idu,$idc));
+        $categorias = categorias::all();
+        $productos = DB::select("SELECT p.idproducto, p.nombreproducto, p.categoriaid, p.descripcion, p.inventario, p.precio, p.imagen
+                     FROM productos p
+                     INNER JOIN categorias c ON c.idcategoria = p.categoriaid
+                     WHERE p.categoriaid = " . $idc);
+
+        return view('mostrarProducto', compact('productos','categorias'));
+    }
 }

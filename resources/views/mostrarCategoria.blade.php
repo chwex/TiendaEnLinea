@@ -32,7 +32,7 @@
 
     <div class="row text-center" style="margin-bottom: 20px;">
     @foreach($categorias as $c)
-        <a href="{{url('/productos')}}/{{$c->idcategoria}}" type="button" class="btn btn-circle" style="font-size: 100%; background-color: rgb(38, 128, 184);">{{$c->nombrecategoria}}</a>
+        <a href="{{url('/mostrarep')}}/{{$c->idcategoria}}" type="button" class="btn btn-circle" style="font-size: 100%; background-color: rgb(38, 128, 184);">{{$c->nombrecategoria}}</a>
         @endforeach
     </div>
 </div>
