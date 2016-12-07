@@ -159,7 +159,7 @@
                                         <tr>
                                             <td>{{$c->name}}</td>
                                             <td>{{$c->mensaje}}</td>
-                                            <td><a href="" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove" aria-hidden="true">Eliminar</span></a></td>
+                                            <td><a href="{{url('/eliminarComentario')}}/{{$c->idcomentario}}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove" aria-hidden="true">Eliminar</span></a></td>
                                         </tr>
                                     @endforeach                                
                                 </tbody> 

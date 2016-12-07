@@ -67,4 +67,5 @@ Route::get('/agregarCarrito/{idproducto}', 'carritousuarioController@agregarCarr
 Route::get('/mostrarVentasUsuario','ventasController@obtenerVentasUsuario');
 Route::get('/mostrarVentaUsuario/{idventa}', 'ventasController@mostrarVentaUsuario');
 Route::get('/productos/{id}','productosController@productoDetalle');
-
+Route::get('/mostrarDetalle/{id}','productosController@productoDetalle');
+Route::get('/eliminarComentario/{id}', 'comentariosController@eliminarComentario');
