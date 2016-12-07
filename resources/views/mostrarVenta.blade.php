@@ -14,12 +14,7 @@
 
 	<div class="container">
 		<div class="row-fluid">
-			<div class="panel-heading">
-				</br></br>
-				<h2 align="left"><b>Venta</b></h2>
-				<hr size="2px" style="color: black" align="left" width="100%" noshade="noshade">
-				<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-			</div>
+			
 		</div>
 	</div>
     <!--Div primer producto con total y boton pagar-->
