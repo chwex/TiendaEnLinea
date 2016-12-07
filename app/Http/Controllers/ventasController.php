@@ -98,4 +98,20 @@ class ventasController extends Controller
         return view ('mostrarVenta', compact('prodventa', 'venta'));
     }
 
+        public function mostrarVentaUsuario($idv){
+            $categorias=categorias::all();
+            $prodventa = DB::select("select v.id, p.nombreproducto, p.imagen, pv.idproducto, pv.cantidad, pv.precio
+                            from ventas v
+                            inner join productosventas pv on v.id = pv.idventa
+                            inner join productos p on pv.idproducto = p.idproducto
+                            where v.id = " . $idv);
+            
+            $venta = DB::select("select v.total, v.folioventa, v.fecha, u.name
+                                from ventas v
+                                inner join users u on v.idusuario = u.id
+                                where v.id = " . $idv);
+
+            return view ('mostrarVentaUsuario', compact('prodventa', 'venta', 'categorias'));
+        }
+
 }

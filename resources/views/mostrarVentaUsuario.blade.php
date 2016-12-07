@@ -1,21 +1,13 @@
-@extends('layouts.admindash')
-
-@section('encabezadocontenido')
-@foreach($venta as $v)
-	<h1> <center>
-		Detalle de Venta con Folio: {{$venta[0]->folioventa}}
-		</br>
-		Fecha de Venta : {{ Carbon\Carbon::parse($venta[0]->fecha)->format('d-m-Y') }}
-		 </center>
-	</h1>
-@endforeach
-@stop
+@extends('layouts.inicio')
 
 @section('contenido')
 
 	<div class="container">
 		<div class="row-fluid">
-			
+			<h2>Venta con Folio: {{$venta[0]->folioventa}}</h2>
+            <br>
+		    <h3>Fecha de Venta : {{ Carbon\Carbon::parse($venta[0]->fecha)->format('d-m-Y') }}</h3>
+            <br>
 		</div>
 	</div>
     <!--Div primer producto con total y boton pagar-->
