@@ -2,7 +2,7 @@
 
 @section('encabezadocontenido')
 	<h1> <center>
-		Ventas
+		Ventas Registradas
 		</br>
 		 </center>
 	</h1>
@@ -11,7 +11,6 @@
 @section('contenido')
 
 <div class="container">
-  <h2>Ventas Registradas</h2>
   </br>
   <table class="table table-hover">
     <thead>
@@ -30,7 +29,7 @@
             <td>{{$v->nombrecompleto}}</td>
             <td>${{$v->total}}</td>
             <td>
-                <a href="{{url('/mostrarVenta')}}/{{$v->id}}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true">Editar</span></a>
+                <a href="{{url('/mostrarVenta')}}/{{$v->id}}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-file" aria-hidden="true">Detalle</span></a>
             </td>
         </tr>
       @endforeach

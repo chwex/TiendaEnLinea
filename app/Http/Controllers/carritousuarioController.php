@@ -24,7 +24,6 @@ class carritousuarioController extends Controller
         }
 
         $productos=DB::select("SELECT * FROM productos WHERE idproducto = " . $idproducto);
-        $categorias = categorias::all();
 
         \Session::flash('mensaje', 'El producto se agregó al carrito.');
         \Session::flash('nivel', '1');

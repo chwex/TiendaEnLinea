@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\productos;
 use App\ventas;
+use App\categorias;
 use DB;
 use App\Mail\correcompra;
 use Illuminate\Support\Facades\Mail;
@@ -72,6 +73,16 @@ class ventasController extends Controller
     	return view ('mostrarVentas', compact('ventas'));
     }
 
+    public function obtenerVentasUsuario(){
+        $categorias=categorias::all();
+        $idusuario = \Auth::user()->id;
+        $ventas= DB::select("SELECT v.*, u.name as nombrecompleto
+                     FROM ventas v
+                     INNER JOIN users u ON u.id = v.idusuario
+                     WHERE v.idusuario = ". $idusuario ." ORDER BY v.folioventa DESC");
+    	return view ('mostrarVentasUsuario', compact('ventas','categorias'));
+    }
+
     public function mostrarVenta($idv){
         $prodventa = DB::select("select v.id, p.nombreproducto, p.imagen, pv.idproducto, pv.cantidad, pv.precio
                         from ventas v
@@ -87,7 +98,4 @@ class ventasController extends Controller
         return view ('mostrarVenta', compact('prodventa', 'venta'));
     }
 
-    public function obtenerVentasUsuario(){
-
-    }
 }
