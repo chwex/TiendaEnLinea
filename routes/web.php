@@ -64,3 +64,4 @@ Route::post('/guardarComentario','comentariosController@guardar');
 Route::get('/micarrito','carritousuarioController@obtenerCarrito');
 Route::get('/agregarCarrito/{idproducto}', 'carritousuarioController@agregarCarrito');
 
+Route::get('/ventaPDF/{idv}','ventasController@ventaPDF');
