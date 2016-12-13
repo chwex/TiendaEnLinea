@@ -51,11 +51,12 @@ class ventasController extends Controller
                DB::update('update carritousuario set estado = 0 where idproducto = ' . $p['idproducto']);
            }
            
-
-            Mail::to(\Auth::user()->email)->send(new correcompra());
+           DB::statement('call sp_productosDescuento()');
 
             \Session::flash('mensaje', 'Se guardo la venta correctamente.');
             \Session::flash('nivel', '1');
+
+            Mail::to(\Auth::user()->email)->send(new correcompra());
 
             return \Response::json( array(
                 'venta' => $venta,

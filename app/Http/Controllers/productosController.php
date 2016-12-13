@@ -23,15 +23,58 @@ class productosController extends Controller
 {
     public function inicio()
     {
-        $categorias=categorias::all();
-        $productosPop = DB::select("SELECT p.idproducto, p.imagen, p.nombreproducto, SUM(pv.cantidad) AS TotalQuantity
-FROM productosventas pv
-INNER JOIN productos p on pv.idproducto = p.idproducto
-GROUP BY p.idproducto, p.imagen, p.nombreproducto
-ORDER BY SUM(pv.cantidad) DESC
-LIMIT 6");
+        //obtener el usuario logeado
+        if ( \Auth::check()) {
+            $idu = \Auth::user()->id;
+        }   
+        else{
+            $idu = 9;
+        }
 
-        return view('paginaprincipal', compact('categorias','productosPop'));
+
+        $categorias=categorias::all();
+        //consulta con productos populares
+        $productosPop = DB::select("SELECT p.idproducto, p.imagen, p.nombreproducto, SUM(pv.cantidad) AS CantidadTotal
+            FROM productosventas pv
+            INNER JOIN productos p on pv.idproducto = p.idproducto
+            GROUP BY p.idproducto, p.imagen, p.nombreproducto
+            ORDER BY SUM(pv.cantidad) DESC
+            LIMIT 3");
+        
+        //consulta con productos con descuento
+        $prodcutosDesc = DB::select('SELECT p.idproducto, p.imagen, p.nombreproducto
+            FROM productosDescuento pd
+            INNER JOIN productos p on pd.idproducto = p.idproducto');
+        
+        //consulta con los articulos(3) mas vistos por un usuario que no esten en su carrito o no hayan sido comprados
+        $productosVisUsr = DB::select('SELECT DISTINCT p.idproducto, p.imagen, p.nombreproducto, pv.visita
+            FROM visitausuarioproducto pv
+            INNER JOIN productos p on pv.idproducto = p.idproducto
+            INNER JOIN carritousuario cu ON pv.idproducto = cu.idproducto
+            INNER JOIN productosventas pr ON pv.idproducto = pr.idproducto
+            INNER JOIN ventas v ON pr.idventa = v.id
+            WHERE pv.idusuario = '. $idu .' AND cu.idusuario <> '. $idu .' AND cu.estado = 0
+            ORDER BY pv.visita DESC
+            LIMIT 3');
+        
+        //consulta con los articulos(3) mas vendidos dentro de la categoria mas visitada por el usuario
+        //obtener la categoria mas visitada por el usuario
+        $catVis = DB::select('SELECT idcategoria, visita
+            FROM visitausuariocategoria 
+            WHERE idusuario = '. $idu .'
+            ORDER BY visita DESC
+            LIMIT 1');
+
+        //obtener productos
+        $prodCat = DB::select('SELECT p.idproducto, p.imagen, p.nombreproducto, SUM(pv.cantidad) AS CantidadTotal
+            FROM productosventas pv
+            INNER JOIN productos p on pv.idproducto = p.idproducto
+            WHERE p.categoriaid = '. $catVis .'
+            GROUP BY p.idproducto, p.imagen, p.nombreproducto
+            ORDER BY SUM(pv.cantidad) DESC
+            LIMIT 3');
+
+        return view('paginaprincipal', compact('categorias','productosPop', 'productosDesc', 'prodCat'));
     }
     //Funcion que obtenga los 6 juegos mejor vendidos para mostrar en la pagina de inicio
     public function productosPopulares(){
@@ -88,7 +131,7 @@ LIMIT 6");
         }
 
         //registrar visita del usuario al producto en la bd
-        DB::select('call sp_visitaproducto(?,?)',array($idu,$idp));
+        DB::statement('call sp_visitaproducto(?,?)',array($idu,$idp));
         
         $categorias=DB::select("SELECT * FROM categorias");
         $productos=DB::select("SELECT *, c.nombrecategoria, (SELECT AVG(valor) FROM calificaciones where idproducto = " .$idp.") as promedio FROM productos p INNER JOIN categorias c on p.categoriaid = c.idcategoria WHERE idproducto = " . $idp);    
@@ -113,7 +156,7 @@ LIMIT 6");
         }
 
         //registrar visita del usuario al producto en la bd
-        DB::select('call sp_visitaproducto(?,?)',array($idu,$idp));
+        DB::statement('call sp_visitaproducto(?,?)',array($idu,$idp));
         
         $categorias=DB::select("SELECT * FROM categorias");
         $productos=DB::select("SELECT *, c.nombrecategoria, (SELECT AVG(valor) FROM calificaciones where idproducto = " .$idp.") as promedio FROM productos p INNER JOIN categorias c on p.categoriaid = c.idcategoria WHERE idproducto = " . $idp);    
