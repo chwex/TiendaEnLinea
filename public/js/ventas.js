@@ -27,6 +27,7 @@ $(document).ready(function(){
         {
             $(this).val(artMod[0].inventario);
             GenerarMensaje(3,'El artículo seleccionado no cuenta con existencia, favor de verificar');
+            actualuzarCalculos();
         }
     });
 

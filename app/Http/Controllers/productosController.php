@@ -42,18 +42,15 @@ class productosController extends Controller
             LIMIT 3");
         
         //consulta con productos con descuento
-        $prodcutosDesc = DB::select('SELECT p.idproducto, p.imagen, p.nombreproducto
+        $productosDesc = DB::select('SELECT p.idproducto, p.imagen, p.nombreproducto
             FROM productosDescuento pd
             INNER JOIN productos p on pd.idproducto = p.idproducto');
         
-        //consulta con los articulos(3) mas vistos por un usuario que no esten en su carrito o no hayan sido comprados
+        //consulta con los articulos(3) mas vistos por un usuario
         $productosVisUsr = DB::select('SELECT DISTINCT p.idproducto, p.imagen, p.nombreproducto, pv.visita
             FROM visitausuarioproducto pv
             INNER JOIN productos p on pv.idproducto = p.idproducto
-            INNER JOIN carritousuario cu ON pv.idproducto = cu.idproducto
-            INNER JOIN productosventas pr ON pv.idproducto = pr.idproducto
-            INNER JOIN ventas v ON pr.idventa = v.id
-            WHERE pv.idusuario = '. $idu .' AND cu.idusuario <> '. $idu .' AND cu.estado = 0
+            WHERE pv.idusuario = '. $idu .'
             ORDER BY pv.visita DESC
             LIMIT 3');
         
@@ -65,16 +62,16 @@ class productosController extends Controller
             ORDER BY visita DESC
             LIMIT 1');
 
-        //obtener productos
+        //obtener productos mas vendidos de la categoria anteriormente seleccionada
         $prodCat = DB::select('SELECT p.idproducto, p.imagen, p.nombreproducto, SUM(pv.cantidad) AS CantidadTotal
             FROM productosventas pv
             INNER JOIN productos p on pv.idproducto = p.idproducto
-            WHERE p.categoriaid = '. $catVis .'
+            WHERE p.categoriaid = '. $catVis[0]->idcategoria .'
             GROUP BY p.idproducto, p.imagen, p.nombreproducto
             ORDER BY SUM(pv.cantidad) DESC
             LIMIT 3');
 
-        return view('paginaprincipal', compact('categorias','productosPop', 'productosDesc', 'prodCat'));
+        return view('paginaprincipal', compact('categorias','productosPop', 'productosDesc', 'prodCat', 'productosVisUsr'));
     }
     //Funcion que obtenga los 6 juegos mejor vendidos para mostrar en la pagina de inicio
     public function productosPopulares(){
