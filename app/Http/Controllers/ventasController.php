@@ -52,10 +52,12 @@ class ventasController extends Controller
            }
            
 
-            Mail::to(\Auth::user()->email)->send(new correcompra());
+            
 
             \Session::flash('mensaje', 'Se guardo la venta correctamente.');
             \Session::flash('nivel', '1');
+
+	    //Mail::to(\Auth::user()->email)->send(new correcompra());
 
             return \Response::json( array(
                 'venta' => $venta,
