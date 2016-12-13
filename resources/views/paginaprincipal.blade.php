@@ -101,7 +101,7 @@ background: #333333;
     <div class="col-sm-4">
       <div class="panel panel-success">
         <div class="panel-heading">Producto: {{$pos}}  </div>
-        <div class="panel-body"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><img src="{{ asset("/Imagenes/Productos/$pp->imagen") }}" class="img-responsive" style="width:400px; height: 400px;" alt="Image"></a></div>
+        <div class="panel-body"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><img src="{{ asset("/Imagenes/Productos/$pp->imagen") }}" class="img-responsive" style="width:400px; height: 400px;" alt="Image" /><img src="http://www.freshbitescardiff.co.uk/wp-content/uploads/2013/04/15_percent_off.png" style="max-width:30%;" alt=""></a></div>
         <div class="panel-footer"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><center>{{$pp->nombreproducto}}</center></a></div>
       </div>
     </div>

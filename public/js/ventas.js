@@ -100,6 +100,13 @@ function actualuzarCalculos(){
 
 function initProd(){
     for(var index in prodAgregados) { 
+        for(var desc in prodDescuento){
+            if(prodAgregados[index].idproducto == prodDescuento[desc].idproducto){
+                prodAgregados[index].precio = formNum(prodDescuento[desc].precioDescuento);
+                $('#precio'+prodAgregados[index].idproducto).val(prodAgregados[index].precio);
+                actualuzarCalculos();
+            }
+        }
         prodAgregados[index].cantidad = 1;
     }
 }
