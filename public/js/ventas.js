@@ -27,6 +27,7 @@ $(document).ready(function(){
         {
             $(this).val(artMod[0].inventario);
             GenerarMensaje(3,'El artículo seleccionado no cuenta con existencia, favor de verificar');
+            actualuzarCalculos();
         }
     });
 
@@ -99,6 +100,13 @@ function actualuzarCalculos(){
 
 function initProd(){
     for(var index in prodAgregados) { 
+        for(var desc in prodDescuento){
+            if(prodAgregados[index].idproducto == prodDescuento[desc].idproducto){
+                prodAgregados[index].precio = formNum(prodDescuento[desc].precioDescuento);
+                $('#precio'+prodAgregados[index].idproducto).val(prodAgregados[index].precio);
+                actualuzarCalculos();
+            }
+        }
         prodAgregados[index].cantidad = 1;
     }
 }

@@ -79,26 +79,75 @@ background: #333333;
   </div>
 
 </div>
-  
+  <h1>Productos mas Vendidos</h1>
   <div class="row">  
    <?php $pos = 1; ?>
    @foreach($productosPop as $pp)
     <div class="col-sm-4">
       <div class="panel panel-success">
-        <div class="panel-heading">Productos Destacado:   </div>
+        <div class="panel-heading">Producto: {{$pos}}  </div>
         <div class="panel-body"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><img src="{{ asset("/Imagenes/Productos/$pp->imagen") }}" class="img-responsive" style="width:400px; height: 400px;" alt="Image"></a></div>
         <div class="panel-footer"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><center>{{$pp->nombreproducto}}</center></a></div>
       </div>
     </div>
     <?php $pos++; ?> 
     @endforeach 
-
   </div>
+
+  <h1>Productos con Descuento</h1>
+  <div class="row">  
+   <?php $pos = 1; ?>
+   @foreach($productosDesc as $pp)
+    <div class="col-sm-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">Producto: {{$pos}}  </div>
+        <div class="panel-body"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><img src="{{ asset("/Imagenes/Productos/$pp->imagen") }}" class="img-responsive" style="width:400px; height: 400px;" alt="Image" /><img src="http://www.freshbitescardiff.co.uk/wp-content/uploads/2013/04/15_percent_off.png" style="max-width:30%;" alt=""></a></div>
+        <div class="panel-footer"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><center>{{$pp->nombreproducto}}</center></a></div>
+      </div>
+    </div>
+    <?php $pos++; ?> 
+    @endforeach 
+  </div>
+
+  <h1>Productos Recomendados para Tí</h1>
+  <div class="row">  
+   <?php $pos = 1; ?>
+   @foreach($productosVisUsr as $pp)
+    <div class="col-sm-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">Producto: {{$pos}}  </div>
+        <div class="panel-body"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><img src="{{ asset("/Imagenes/Productos/$pp->imagen") }}" class="img-responsive" style="width:400px; height: 400px;" alt="Image"></a></div>
+        <div class="panel-footer"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><center>{{$pp->nombreproducto}}</center></a></div>
+      </div>
+    </div>
+    <?php $pos++; ?> 
+    @endforeach 
+  </div>
+
+  <h1>Productos Populares de tu Categoria Favorita</h1>
+  <div class="row">  
+   <?php $pos = 1; ?>
+   @foreach($prodCat as $pp)
+    <div class="col-sm-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">Producto: {{$pos}}  </div>
+        <div class="panel-body"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><img src="{{ asset("/Imagenes/Productos/$pp->imagen") }}" class="img-responsive" style="width:400px; height: 400px;" alt="Image"></a></div>
+        <div class="panel-footer"><a href="{{ url('/productos')}}/{{$pp->idproducto}}"><center>{{$pp->nombreproducto}}</center></a></div>
+      </div>
+    </div>
+    <?php $pos++; ?> 
+    @endforeach 
+  </div>
+
 </div>  
-</div><br>
+
+
+@stop
+
+@section('scripts')
 <script>
   $(document).ready(function() {
-    $('#myCarousel').carousel({
+    $('#carousel-example-generic').carousel({
         interval: 5000
     })
 });

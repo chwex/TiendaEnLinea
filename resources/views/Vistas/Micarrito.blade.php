@@ -22,7 +22,10 @@
 		  				<div class="col-xs-10">
 		  					<div class="form-group">
 		  						<label for="nProduct">{{$pc->nombreproducto}}</label>
-		  						<img src="{{ asset("/Imagenes/Productos/$pc->imagen")}}" class="img-responsive" alt="no encontrada">
+		  						<img src="{{ asset("/Imagenes/Productos/$pc->imagen")}}" class="img-responsive" alt="no encontrada" >
+								@if($pc->descuento == 1)  
+								<img id="image2" src="http://www.freshbitescardiff.co.uk/wp-content/uploads/2013/04/15_percent_off.png" style="max-width:30%;" alt="..." />
+								@endif
 		  					</div>
 		  				</div>
 	  				</div>
@@ -40,7 +43,7 @@
 								<label for="precio">Precio</label>
 								<div class="input-group">
 									<span class="input-group-addon">$</span>
-									<input type="text" class="form-control" name="precio" id="precio" value="{{$pc->precio}}" disabled>
+									<input type="text" class="form-control" name="precio" id="precio{{$pc->idproducto}}" value="{{$pc->precio}}" disabled>
 								</div>	
 							</div>
 						</div>
@@ -71,6 +74,7 @@
 			</div>
 		</div>
 	</div>
+	<br>
 	@endforeach
 	<div class="col-md-3 pull-right">
 		<div class="col-xs-10">
@@ -92,7 +96,10 @@
 @section('scripts')
 <script>
 	var rawproductos = '<?php echo json_encode($productosCarrito); ?>';
+	var rawproddesc = '<?php echo json_encode($productosDescuento); ?>';
 	var prodAgregados = JSON.parse(rawproductos);
+	var prodDescuento = JSON.parse(rawproddesc);
+
 </script>
 
 <script src="{{ asset("/js/ventas.js") }}"></script>

@@ -123,6 +123,9 @@
 			  		<div class="row">
 			  			<div class="col-xs-12 col-sm-4 text-center">
 							<img src="{{ asset("/Imagenes/Productos/$p->imagen")}}" alt="" class="center-block img-circle img-responsive">
+							@if($p->descuento == 1)  
+								<img id="image2" src="http://www.freshbitescardiff.co.uk/wp-content/uploads/2013/04/15_percent_off.png" style="max-width:30%;" alt="..." />
+							@endif
 						</div>
 						<div class="col-xs-12 col-sm-8">
 							<h2>{{$p -> nombreproducto}}</h2>
@@ -141,7 +144,7 @@
 						</div>        
 					</div> 
 					<div class="col-xs-12 col-sm-4">
-						<h2><strong>${{$p->precio}} </strong></h2>
+						<h2><strong id="precio">${{$p->precio}} </strong></h2>
 
 						@if(!Auth::guest())                    
 							<form action="{{ url('/agregarCarrito')}}/{{$p->idproducto}}">
@@ -205,3 +208,19 @@
 	</div>
 </div>
 @stop
+@section('scripts')
+	<script>
+	var rawproductos = '<?php echo json_encode($productos); ?>';
+	var rawproddesc = '<?php echo json_encode($productosDescuento); ?>';
+	var prod = JSON.parse(rawproductos);
+	var prodDescuento = JSON.parse(rawproddesc);
+
+
+        for(var desc in prodDescuento){
+            if(prod[0].idproducto == prodDescuento[desc].idproducto){
+                $('#precio').html('$'+prodDescuento[desc].precioDescuento);
+            }
+        }
+    
+	</script>
+@endsection

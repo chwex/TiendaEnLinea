@@ -36,14 +36,19 @@ class carritousuarioController extends Controller
     {
         $categorias=categorias::all();
         $idusuario = \Auth::user()->id;
-        $productosCarrito = DB::select("select p.idproducto, u.id, p.nombreproducto, p.descripcion, p.inventario, p.precio, p.imagen, cat.nombrecategoria 
+        $productosCarrito = DB::select("select p.idproducto, u.id, p.nombreproducto, p.descripcion, p.inventario, p.precio, p.imagen, p.descuento, cat.nombrecategoria 
                         from carritousuario cu
                         inner join users u on cu.idusuario = u.id
                         inner join productos p on cu.idproducto = p.idproducto
                         inner join categorias cat on p.categoriaid = cat.idcategoria
                         where cu.estado = 1 and u.id = " . $idusuario);
+        
+        $productosDescuento = DB::select('select *
+                        from productos p 
+                        inner join productosDescuento pd ON p.idproducto = pd.idproducto
+                        where pd.idproducto = pd.idproducto');
 
-        return view('/Vistas/Micarrito', compact('productosCarrito', 'categorias'));
+        return view('/Vistas/Micarrito', compact('productosCarrito', 'categorias', 'productosDescuento'));
     }
 
     public function removerProducto(Request $request)
