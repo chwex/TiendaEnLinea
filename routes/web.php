@@ -45,7 +45,7 @@ Route::group(['middleware' => ['admin']], function(){
 //Rutas registro
 Route::get('/registroUsuario','usuarioController@registroUsuario');
 //Rutas inicio
-Route::get('/home', 'HomeController@index');
+
 Route::get('/', 'productosController@inicio');
 
 //Rutas ventas
